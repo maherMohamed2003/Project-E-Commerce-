@@ -12,7 +12,6 @@ namespace storeProject.Models
         public int Id { get; set; }
         public int CustomerId { get; set; }
         public Customer customer { get; set; }
-
         public ICollection<CartItem> cartItems { get; set; }
     }
 }

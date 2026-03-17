@@ -15,7 +15,7 @@ namespace storeProject.Models
         public string LName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public DateTime RegisterDate { get; set; }
+        public DateTime RegisterDate { get; set; } = DateTime.Now;
         public Cart cart {  get; set; }
         public Favourite Favourite {  get; set; }
         public int RoleId { get; set; }

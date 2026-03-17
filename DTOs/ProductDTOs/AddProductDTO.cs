@@ -1,0 +1,15 @@
+﻿using storeProject.Models;
+
+namespace E_Commerce_Proj.DTOs.Product
+{
+    public class AddProductDTO
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+        public int Quantity { get; set; }
+        public int CategoryId { get; set; }
+        public List<IFormFile> productImages { get; set; }
+
+    }
+}

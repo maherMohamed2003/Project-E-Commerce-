@@ -12,7 +12,7 @@ namespace E_Commerce_Proj.Configuration
                 builder.Property(c => c.FName).IsRequired().HasMaxLength(50).HasColumnName("FirstName");
                 builder.Property(c => c.LName).IsRequired().HasMaxLength(50).HasColumnName("LastName");
                 builder.Property(c => c.Email).IsRequired().HasMaxLength(50);
-                builder.Property(c => c.Password).IsRequired().HasMaxLength(50);
+                builder.Property(c => c.Password).IsRequired().HasMaxLength(300);
 
             // Relationships
             builder.HasMany(c => c.roles)
