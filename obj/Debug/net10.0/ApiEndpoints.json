@@ -16,6 +16,91 @@
     ]
   },
   {
+    "ContainingType": "E_Commerce_Proj.Controllers.CartController",
+    "Method": "AddItemToCart",
+    "RelativePath": "api/Cart/AddItemToCart",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "itemDTO",
+        "Type": "E_Commerce_Proj.DTOs.CartDTOs.AddCartItemDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_Commerce_Proj.Controllers.CartController",
+    "Method": "ClearCart",
+    "RelativePath": "api/Cart/ClearCart/{userId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_Commerce_Proj.Controllers.CartController",
+    "Method": "GetCartItemsPerUser",
+    "RelativePath": "api/Cart/GetCartItemsPerUser/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_Commerce_Proj.Controllers.CartController",
+    "Method": "RemoveItemFromCart",
+    "RelativePath": "api/Cart/RemoveItemFromCart/{userId}/{productId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_Commerce_Proj.Controllers.CartController",
+    "Method": "UpdateItemQuentity",
+    "RelativePath": "api/Cart/UpdateItemQuentity",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "itemDTO",
+        "Type": "E_Commerce_Proj.DTOs.CartDTOs.AddCartItemDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "E_Commerce_Proj.Controllers.CategoryController",
     "Method": "AddCategory",
     "RelativePath": "api/Category/AddCategory",
@@ -278,6 +363,22 @@
   },
   {
     "ContainingType": "E_Commerce_Proj.Controllers.UserController",
+    "Method": "ConfirmEmail",
+    "RelativePath": "api/User/ConfirmEmail",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "token",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_Commerce_Proj.Controllers.UserController",
     "Method": "DeleteProfile",
     "RelativePath": "api/User/DeleteProfile/{id}",
     "HttpMethod": "DELETE",
@@ -295,16 +396,11 @@
   {
     "ContainingType": "E_Commerce_Proj.Controllers.UserController",
     "Method": "EditProfile",
-    "RelativePath": "api/User/EditProfile/{id}",
+    "RelativePath": "api/User/EditProfile",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
       {
         "Name": "edit",
         "Type": "E_Commerce_Proj.DTOs.User.EditProfileDTO",

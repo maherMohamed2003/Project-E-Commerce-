@@ -30,11 +30,6 @@ namespace E_Commerce_Proj.Configuration
                 .WithOne(c => c.customer)
                 .HasForeignKey(x => x.CustomerId)
                 .OnDelete(DeleteBehavior.NoAction);
-
-            builder.HasMany(c => c.customerPhones)
-                .WithOne(p => p.customer)
-                .HasForeignKey(x => x.CustomerId)
-                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

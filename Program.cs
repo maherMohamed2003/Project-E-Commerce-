@@ -1,10 +1,12 @@
 using System.Text;
 using E_Commerce_Proj.Authentication;
 using E_Commerce_Proj.Data;
+using E_Commerce_Proj.Validation.CartValid;
 using E_Commerce_Proj.Validation.CategoryValid;
 using E_Commerce_Proj.Validation.Customer;
 using E_Commerce_Proj.Validation.Feedback;
 using E_Commerce_Proj.Validation.ProductValid;
+using E_Commerce_Proj.Validation.ReviewValid;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -20,12 +22,14 @@ builder.Services.AddControllers().AddFluentValidation(o =>
         o.RegisterValidatorsFromAssemblyContaining<FeedbackValidation>();
         o.RegisterValidatorsFromAssemblyContaining<AddProductValidation>();
         o.RegisterValidatorsFromAssemblyContaining<AddCategoryValidation>();
+        o.RegisterValidatorsFromAssemblyContaining<AddReviewValidation>();
+        o.RegisterValidatorsFromAssemblyContaining<AddCartItemValidation>();
     });
 builder.Services.AddDbContextSettings().AddSwaggerSettings().AddReposetories();
-#endregion
 
 var jwt = builder.Configuration.GetSection("JWT").Get<JWTOptions>();
 builder.Services.AddSingleton(jwt);
+#endregion
 
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, o =>

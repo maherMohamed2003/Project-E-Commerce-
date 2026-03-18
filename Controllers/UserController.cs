@@ -1,4 +1,6 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Text;
 using E_Commerce_Proj.Authentication;
@@ -44,30 +46,57 @@ namespace E_Commerce_Proj.Controllers
             {
                 FName = register.FName,
                 LName = register.LName,
+                EmailToken = Guid.NewGuid().ToString(),
                 Email = register.Email
             };
+
+
             newUser.Password = hasher.HashPassword(newUser, register.Password);
             await _context.Customers.AddAsync(newUser);
+            await _context.SaveChangesAsync();
             
+            var confirmationLink = $"{Request.Scheme}://{Request.Host}/api/User/ConfirmEmail?token={newUser.EmailToken}";
+            await SendEmailAsync(newUser.Email, $"Confirm your Email:\n{confirmationLink}");
+
+            return Ok("Check your email to confirm your account");
+            
+        }
+
+        [HttpGet]
+        [Route("ConfirmEmail/")]
+        [AllowAnonymous]
+        public async Task<IActionResult> ConfirmEmail(string token)
+        {
+            var nowUser = await _context.Customers.FirstOrDefaultAsync(u => u.EmailToken == token);
+            if (nowUser == null)
+                return NotFound("Invalid Token");
+            nowUser.IsEmailVerified = true;
+            nowUser.EmailToken = "";
+            await _context.SaveChangesAsync();
             var cart = new Cart
             {
-                CustomerId = newUser.Id
+                CustomerId = nowUser.Id
             };
 
             var fav = new Favourite
             {
-                CustomerId = newUser.Id
+                CustomerId = nowUser.Id
             };
 
             var role = new Role
             {
-                Name = "User"
+                Name = "User",
+                customerId = nowUser.Id
             };
-            
 
-            var token = GenerateToken(newUser);
+            await _context.Carts.AddAsync(cart);
+            await _context.Favourites.AddAsync(fav);
+            await _context.Roles.AddAsync(role);
+
+
+            var JWTtoken = GenerateToken(nowUser);
             await _context.SaveChangesAsync();
-            return Ok(token);
+            return Ok(JWTtoken);
         }
 
         [HttpPost]
@@ -79,6 +108,13 @@ namespace E_Commerce_Proj.Controllers
            
             if (user == null)
                 return NotFound("Invalid Email Or Password");
+
+            if (!user.IsEmailVerified)
+            {
+                await SendEmailAsync(user.Email, $"Please Verify Your Email To Login:\n{Request.Scheme}://{Request.Host}/api/User/ConfirmEmail?token={user.EmailToken}");
+                return BadRequest("Please Check Your Email To Verify First");
+            }
+
             var hasher = new PasswordHasher<Customer>();
             var result = hasher.VerifyHashedPassword(user, user.Password, login.Password);
             
@@ -90,8 +126,8 @@ namespace E_Commerce_Proj.Controllers
         }
 
         [HttpPut]
-        [Route("EditProfile/{id}")]
-        public async Task<IActionResult> EditProfile(int id ,EditProfileDTO edit)
+        [Route("EditProfile/")]
+        public async Task<IActionResult> EditProfile(EditProfileDTO edit)
         {
             var user = await _context.Customers.FirstOrDefaultAsync(u => u.FName == edit.FName && u.LName == edit.LName);
             if (user == null)
@@ -107,6 +143,7 @@ namespace E_Commerce_Proj.Controllers
 
         [HttpDelete]
         [Route("DeleteProfile/{id}")]
+        [AllowAnonymous]
         public async Task<IActionResult> DeleteProfile(int id)
         {
             var user = await _context.Customers.FirstOrDefaultAsync(u => u.Id == id);
@@ -123,7 +160,7 @@ namespace E_Commerce_Proj.Controllers
             var credintials = new SigningCredentials(key , SecurityAlgorithms.HmacSha256);
             var roles = _context.Roles.Where(r => r.customerId == r.Id).Select(r => r.Name).ToList();
             
-            var claims = new[]
+            var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier,r.Id.ToString()),
                 new Claim(ClaimTypes.Email,r.Email),
@@ -132,7 +169,7 @@ namespace E_Commerce_Proj.Controllers
             
             foreach(var role in roles)
             {
-                claims.Append(new Claim(ClaimTypes.Role, role));
+                claims.Add(new Claim(ClaimTypes.Role, role));
             }
 
             var token = new JwtSecurityToken(
@@ -141,6 +178,28 @@ namespace E_Commerce_Proj.Controllers
                 signingCredentials: credintials
             );
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        private async Task SendEmailAsync(string to, string body)
+        {
+            var smtp = new SmtpClient("smtp.gmail.com")
+            {
+                Port = 587,
+                Credentials = new NetworkCredential("maheralzamzamy3@gmail.com", "sxlv fxga ffqx xinw"),
+                EnableSsl = true
+            };
+
+            var mail = new MailMessage
+            {
+                From = new MailAddress("maheralzamzamy3@gmail.com"),
+                Subject = "Confirm your account",
+                Body = body,
+                IsBodyHtml = true
+            };
+
+            mail.To.Add(to);
+
+            await smtp.SendMailAsync(mail);
         }
     }
 }

@@ -17,7 +17,6 @@ namespace E_Commerce_Proj.Data
         public DbSet<CartItem> CartItems { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Shipping> Shippings { get; set; }
-        public DbSet<CustomerPhone> customerPhones { get; set; }
         public DbSet<FavoriteItem> favoriteItems { get; set; }
         public DbSet<FeedBack> feedBacks { get; set; }
         public DbSet<Favourite> Favourites { get; set; }
