@@ -10,5 +10,6 @@ namespace E_Commerce_Proj.Reposetories.ProductReposetories
         public Task<string> AddProductAsync(AddProductDTO newProduct);
         public Task<string> UpdateProductAsync(int id, UpdateProductDTO updatedProduct);
         public Task<string> DeleteProductAsync(int id);
+        public Task<List<DisplayProductDTO>> SearchAboutProductAsync(string name);
     }
 }

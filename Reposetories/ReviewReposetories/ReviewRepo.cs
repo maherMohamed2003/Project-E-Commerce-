@@ -2,6 +2,7 @@
 using E_Commerce_Proj.DTOs.ReviewDTOs;
 using storeProject.Models;
 using Microsoft.EntityFrameworkCore;
+using E_Commerce_Proj.DTOs.Review;
 
 namespace E_Commerce_Proj.Reposetories.ReviewReposetories
 {
@@ -16,6 +17,10 @@ namespace E_Commerce_Proj.Reposetories.ReviewReposetories
 
         public async Task<string> AddReviewAsync(int userId, int productId, AddReviewDTO rev)
         {
+            var user = await _context.Customers.FirstOrDefaultAsync(x => x.Id == userId);
+            var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == productId);
+            if (user == null || product == null)
+                return "Something Went Wrong";
             var newReview = new Review
             {
                 ProductId = productId,
@@ -37,6 +42,20 @@ namespace E_Commerce_Proj.Reposetories.ReviewReposetories
             _context.Reviews.Remove(rev);
             await _context.SaveChangesAsync();
             return "Review deleted successfully";
+        }
+
+        public async Task<List<DisplayReviewDTO>> GetAllReviewsByProductIdAsync(int productId)
+        {
+            var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == productId);
+            var reviews = await _context.Reviews.Where(x => x.ProductId == productId)
+                .Select(x => new DisplayReviewDTO
+                {
+                    ReviewTaxt = x.ReviewTaxt,
+                    Rating = x.Rating,
+                    CustomerName = x.customer.FName + " " + x.customer.LName,
+                    ReviewDate = x.ReviewDate
+                }).ToListAsync();
+            return reviews;
         }
 
         public async Task<string> UpdateReviewAsync(int userId, int reviewId, AddReviewDTO rev)

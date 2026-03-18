@@ -48,10 +48,10 @@ namespace E_Commerce_Proj.Controllers
 
         [HttpPut]
         [Route("UpdateProduct/{id}")]
-        public async Task<IActionResult> UpdateProduct(int id, UpdateProductDTO updatedProduct)
+        public async Task<IActionResult> UpdateProduct( int id, UpdateProductDTO updatedProduct)
         {
             var result = await _repo.UpdateProductAsync(id, updatedProduct);
-            if (result == "Product updated successfully")
+            if (result == "Product updated successfully.")
                 return Ok(result);
             return BadRequest(result);
         }
@@ -65,5 +65,16 @@ namespace E_Commerce_Proj.Controllers
                 return Ok(result);
             return BadRequest(result);
         }
-    }
+
+        [HttpGet]
+        [Route("SearchProduct/{name}")]
+        public async Task<IActionResult> SearchProduct(string name)
+        {
+            var products = await _repo.SearchAboutProductAsync(name);
+            if (products == null || products.Count == 0)
+                return NotFound("No Results Found!");
+            return Ok(products);
+        }
+
+        }
 }

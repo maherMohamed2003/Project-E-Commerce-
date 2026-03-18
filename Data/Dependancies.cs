@@ -1,6 +1,8 @@
 ﻿using E_Commerce_Proj.Abstracts.Feedback;
 using E_Commerce_Proj.Reposetories.CartReposetories;
 using E_Commerce_Proj.Reposetories.CategoryReposetories;
+using E_Commerce_Proj.Reposetories.FavouriteReposetories;
+using E_Commerce_Proj.Reposetories.OrderReposetories;
 using E_Commerce_Proj.Reposetories.ProductReposetories;
 using E_Commerce_Proj.Reposetories.ReviewReposetories;
 
@@ -27,6 +29,8 @@ namespace E_Commerce_Proj.Data
             services.AddScoped<ICategoryRepo, CategoryRepo>();
             services.AddScoped<IReviewRepo, ReviewRepo>();
             services.AddScoped<ICartRepo, CartRepo>();
+            services.AddScoped<IOrderRepo, OrderRepo>();
+            services.AddScoped<IFavouriteRepo, FavouriteRepo>();
             return services;
         }
     }

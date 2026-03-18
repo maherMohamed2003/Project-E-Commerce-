@@ -66,19 +66,14 @@
   {
     "ContainingType": "E_Commerce_Proj.Controllers.CartController",
     "Method": "RemoveItemFromCart",
-    "RelativePath": "api/Cart/RemoveItemFromCart/{userId}/{productId}",
+    "RelativePath": "api/Cart/RemoveItemFromCart",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "productId",
-        "Type": "System.Int32",
+        "Name": "dto",
+        "Type": "E_Commerce_Proj.DTOs.CartDTOs.RemoveItemFromCartDTO",
         "IsRequired": true
       }
     ],
@@ -118,6 +113,22 @@
   },
   {
     "ContainingType": "E_Commerce_Proj.Controllers.CategoryController",
+    "Method": "DeleteCategory",
+    "RelativePath": "api/Category/DeleteCategory/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_Commerce_Proj.Controllers.CategoryController",
     "Method": "GetAllCategories",
     "RelativePath": "api/Category/GetAllCategories",
     "HttpMethod": "GET",
@@ -136,6 +147,91 @@
     "Parameters": [
       {
         "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_Commerce_Proj.Controllers.CategoryController",
+    "Method": "UpdateCategory",
+    "RelativePath": "api/Category/UpdateCategory/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "update",
+        "Type": "E_Commerce_Proj.DTOs.CategoryDTOs.UpdateCategoryDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_Commerce_Proj.Controllers.FavouriteController",
+    "Method": "AddItemToFavouriteList",
+    "RelativePath": "api/Favourite/AddItemToFavourite",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "E_Commerce_Proj.DTOs.FavouriteDTOs.AddItemToFavouriteList",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_Commerce_Proj.Controllers.FavouriteController",
+    "Method": "ClearList",
+    "RelativePath": "api/Favourite/ClearFavouriteList/{userId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_Commerce_Proj.Controllers.FavouriteController",
+    "Method": "RemoveItem",
+    "RelativePath": "api/Favourite/DeleteItemFromFavouriteList",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "E_Commerce_Proj.DTOs.FavouriteDTOs.AddItemToFavouriteList",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_Commerce_Proj.Controllers.FavouriteController",
+    "Method": "GetAllFavouriteList",
+    "RelativePath": "api/Favourite/GatFavouriteItems/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -170,6 +266,22 @@
   },
   {
     "ContainingType": "E_Commerce_Proj.Controllers.FeedbackController",
+    "Method": "DisplayAllFeedbacksPerOneUser",
+    "RelativePath": "api/Feedback/GetAllFeedbacksPerUser/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_Commerce_Proj.Controllers.FeedbackController",
     "Method": "AddFeed",
     "RelativePath": "api/Feedback/newFeed",
     "HttpMethod": "POST",
@@ -179,6 +291,64 @@
       {
         "Name": "newFeedBackDTO",
         "Type": "E_Commerce_Proj.DTOs.Feedback.AddFeedBackDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_Commerce_Proj.Controllers.OrderController",
+    "Method": "CancelOrder",
+    "RelativePath": "api/Order/CancelOrder/{orderId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_Commerce_Proj.Controllers.OrderController",
+    "Method": "CreateOrder",
+    "RelativePath": "api/Order/CreateOrder",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderDTO",
+        "Type": "E_Commerce_Proj.DTOs.OrderDTOs.CreateOrderDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_Commerce_Proj.Controllers.OrderController",
+    "Method": "DisplayAllOrders",
+    "RelativePath": "api/Order/DisplayAllOrders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_Commerce_Proj.Controllers.OrderController",
+    "Method": "DisplayOrdersPerUser",
+    "RelativePath": "api/Order/DisplayOrdersPerUser/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -269,6 +439,22 @@
   },
   {
     "ContainingType": "E_Commerce_Proj.Controllers.ProductController",
+    "Method": "SearchProduct",
+    "RelativePath": "api/Product/SearchProduct/{name}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_Commerce_Proj.Controllers.ProductController",
     "Method": "UpdateProduct",
     "RelativePath": "api/Product/UpdateProduct/{id}",
     "HttpMethod": "PUT",
@@ -291,7 +477,7 @@
   {
     "ContainingType": "E_Commerce_Proj.Controllers.ReviewController",
     "Method": "AddReview",
-    "RelativePath": "api/Review/AddReview/{userId}/{productId}",
+    "RelativePath": "api/Review/AddReview/{userId}/{reviewId}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -304,11 +490,16 @@
       {
         "Name": "productId",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
       },
       {
         "Name": "rev",
         "Type": "E_Commerce_Proj.DTOs.ReviewDTOs.AddReviewDTO",
+        "IsRequired": true
+      },
+      {
+        "Name": "reviewId",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -317,7 +508,7 @@
   {
     "ContainingType": "E_Commerce_Proj.Controllers.ReviewController",
     "Method": "DeleteReview",
-    "RelativePath": "api/Review/DeleteReview/{userId}/{reviewId}",
+    "RelativePath": "api/Review/DeleteReview/{userId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -329,6 +520,22 @@
       },
       {
         "Name": "reviewId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_Commerce_Proj.Controllers.ReviewController",
+    "Method": "GetAllReviewsByProductId",
+    "RelativePath": "api/Review/GetAllReviewsByProductId/{productId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -372,7 +579,7 @@
       {
         "Name": "token",
         "Type": "System.String",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

@@ -37,6 +37,19 @@ namespace E_Commerce_Proj.Abstracts.Feedback
             return "Feedback Deleted Successfully!";
         }
 
+        public async Task<List<DisplayFeedback>> DisplayAllFeedbacksFromOneUser(int userId)
+        {
+            var feedbacks = await _context.feedBacks.Where(x => x.CustomerId == userId).Select(x => new DisplayFeedback
+            {
+                Comment = x.Comment,
+                FeedBackDate = x.FeedBackDate,
+                AuthorName = x.customer.FName + " " + x.customer.LName
+            }).ToListAsync();
+            if(feedbacks == null || feedbacks.Count == 0)
+                return null;
+            return feedbacks;
+        }
+
         public async Task<List<DisplayFeedback>> GetAllFeedbacks()
         {
             var feedbacks = _context.feedBacks.Select(x => new DisplayFeedback

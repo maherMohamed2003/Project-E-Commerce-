@@ -26,7 +26,7 @@ namespace E_Commerce_Proj.Controllers
         }
 
         [HttpGet]
-        [Route("GetCartItemsPerUser/{id}")]
+        [Route("GetCartItemsPerUser/{id}/")]
         public async Task<IActionResult> GetCartItemsPerUser(int id)
         {
             var result = await _repo.GetCartItemsPerUserAsync(id);
@@ -45,10 +45,10 @@ namespace E_Commerce_Proj.Controllers
         }
 
         [HttpDelete]
-        [Route("RemoveItemFromCart/{userId}/{productId}")]
-        public async Task<IActionResult> RemoveItemFromCart(int userId, int productId)
+        [Route("RemoveItemFromCart/")]
+        public async Task<IActionResult> RemoveItemFromCart(RemoveItemFromCartDTO dto)
         {
-            var result = await _repo.RemoveItemFromCartAsync(userId, productId);
+            var result = await _repo.RemoveItemFromCartAsync(dto.userId, dto.productId);
             if (result == "Something Went Wrong")
                 return BadRequest(result);
             return Ok(result);

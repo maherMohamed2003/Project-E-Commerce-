@@ -13,14 +13,14 @@ namespace E_Commerce_Proj.Controllers
     {
         private readonly IFeedbackRepo _repo;
 
-        public FeedbackController(IFeedbackRepo reopo)
+        public FeedbackController( IFeedbackRepo reopo)
         {
             _repo = reopo;
         }
 
         [HttpPost]
         [Route("newFeed/")]
-        public async Task<IActionResult> AddFeed(AddFeedBackDTO newFeedBackDTO)
+        public async Task<IActionResult> AddFeed([FromBody] AddFeedBackDTO newFeedBackDTO)
         {
             var res = await _repo.AddFeedbackAsync(newFeedBackDTO);
             if (res == null)
@@ -40,11 +40,21 @@ namespace E_Commerce_Proj.Controllers
 
         [HttpDelete]
         [Route("DeleteFeed/{id}")]
-        public async Task<IActionResult> DeleteFeed(int id)
+        public async Task<IActionResult> DeleteFeed( int id)
         {
             var res = await _repo.DeleteFeedbackAsync(id);
             if (res == null)
                 return NotFound("Feedback Not Found!");
+            return Ok(res);
+        }
+
+        [HttpGet]
+        [Route("GetAllFeedbacksPerUser/{userId}")]
+        public async Task<IActionResult> DisplayAllFeedbacksPerOneUser( int userId)
+        { 
+            var res = await _repo.DisplayAllFeedbacksFromOneUser(userId);
+            if (res == null)
+                return NotFound("No Feedbacks Sent Yet!");
             return Ok(res);
         }
     }

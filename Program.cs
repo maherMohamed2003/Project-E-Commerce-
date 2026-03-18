@@ -7,6 +7,7 @@ using E_Commerce_Proj.Validation.Customer;
 using E_Commerce_Proj.Validation.Feedback;
 using E_Commerce_Proj.Validation.ProductValid;
 using E_Commerce_Proj.Validation.ReviewValid;
+using E_CommerceApi.Middlewares;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -24,6 +25,8 @@ builder.Services.AddControllers().AddFluentValidation(o =>
         o.RegisterValidatorsFromAssemblyContaining<AddCategoryValidation>();
         o.RegisterValidatorsFromAssemblyContaining<AddReviewValidation>();
         o.RegisterValidatorsFromAssemblyContaining<AddCartItemValidation>();
+        o.RegisterValidatorsFromAssemblyContaining<UpdateProductValidation>();
+        o.RegisterValidatorsFromAssemblyContaining<UpdateCategoryValidation>();
     });
 builder.Services.AddDbContextSettings().AddSwaggerSettings().AddReposetories();
 
@@ -54,7 +57,13 @@ if (app.Environment.IsDevelopment())
 }
 app.MapGet("/", () => Results.Redirect("/swagger/"));
 app.UseHttpsRedirection();
+#region Middlewares
 
+app.UseMiddleware<LoggingMiddleware>();
+app.UseMiddleware<CounterMiddleware>();
+app.UseMiddleware<HandleRequestsMiddleware>();
+
+#endregion
 app.UseAuthentication();
 app.UseAuthorization();
 

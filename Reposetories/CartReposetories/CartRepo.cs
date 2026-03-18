@@ -17,7 +17,8 @@ namespace E_Commerce_Proj.Reposetories.CartReposetories
         public async Task<string> AddItemToCartAsync(AddCartItemDTO itemDTO)
         {
             var nowUser = await _context.Customers.Include(x => x.cart).FirstOrDefaultAsync(x => x.Id == itemDTO.UserId);
-            if (nowUser == null)
+            var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == itemDTO.ProductId);
+            if (nowUser == null || product == null)
                 return "Something Went Wrong";
             var checkFound = await _context.CartItems.FirstOrDefaultAsync(x => x.CartId == nowUser.cart.Id && x.ProductId == itemDTO.ProductId);
             if(checkFound != null)

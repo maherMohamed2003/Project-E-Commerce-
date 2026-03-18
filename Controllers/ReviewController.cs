@@ -10,14 +10,14 @@ namespace E_Commerce_Proj.Controllers
     {
         private readonly IReviewRepo _repo;
 
-        public ReviewController(IReviewRepo repo)
+        public ReviewController( IReviewRepo repo)
         {
             _repo = repo;
         }
 
         [HttpPost]
-        [Route("AddReview/{userId}/{productId}")]
-        public async Task<IActionResult> AddReview(int userId, int productId, AddReviewDTO rev)
+        [Route("AddReview/{userId}/{reviewId}/")]
+        public async Task<IActionResult> AddReview(int userId, int productId, [FromBody] AddReviewDTO rev)
         {
             var result = await _repo.AddReviewAsync(userId, productId, rev);
             if (result == "Review added successfully")
@@ -28,8 +28,8 @@ namespace E_Commerce_Proj.Controllers
         }
 
         [HttpPut]
-        [Route("UpdateReview/{userId}/{reviewId}")]
-        public async Task<IActionResult> UpdateReview(int userId, int reviewId, AddReviewDTO rev)
+        [Route("UpdateReview/{userId}/{reviewId}/")]
+        public async Task<IActionResult> UpdateReview( int userId, int reviewId, [FromBody] AddReviewDTO rev)
         {
             var result = await _repo.UpdateReviewAsync(userId, reviewId, rev);
             if (result == "Review updated successfully")
@@ -41,8 +41,8 @@ namespace E_Commerce_Proj.Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteReview/{userId}/{reviewId}")]
-        public async Task<IActionResult> DeleteReview(int userId, int reviewId)
+        [Route("DeleteReview/{userId}/")]
+        public async Task<IActionResult> DeleteReview(int userId, [FromBody] int reviewId)
         {
             var result = await _repo.DeleteReviewAsync(userId, reviewId);
             if (result == "Review deleted successfully")
@@ -52,5 +52,17 @@ namespace E_Commerce_Proj.Controllers
             else
                 return BadRequest();
         }
-    }
+
+        [HttpGet]
+        [Route("GetAllReviewsByProductId/{productId}")]
+        public async Task<IActionResult> GetAllReviewsByProductId( int productId)
+        {
+            var result = await _repo.GetAllReviewsByProductIdAsync(productId);
+            if (result == null)
+            {
+                return NotFound("The Product Not Found");
+            }
+            return Ok(result);
+        }
+        }
 }

@@ -20,6 +20,9 @@ namespace E_Commerce_Proj.Reposetories.ProductReposetories
 
         public async Task<string> AddProductAsync(AddProductDTO newProduct)
         {
+            var category = await _context.Categories.FirstOrDefaultAsync(x => x.Id == newProduct.CategoryId);
+            if(category == null)
+                return "Category Not Found";
             var product = new Product
             {
                 Name = newProduct.Name,
@@ -107,6 +110,29 @@ namespace E_Commerce_Proj.Reposetories.ProductReposetories
             if (product == null)
                 return null;
             return product;
+        }
+
+        public async Task<List<DisplayProductDTO>> SearchAboutProductAsync(string name)
+        {
+            var products = await _context.Products
+                .Where(p => p.Name.Contains(name))
+                .Select(x => new DisplayProductDTO
+                {
+                    Name = x.Name,
+                    Description = x.Description,
+                    Price = x.Price,
+                    Quantity = x.Quantity,
+                    CategoryName = x.category.Name,
+                    Reviews = x.reviews.Select(r => new DisplayReviewDTO
+                    {
+                        ReviewTaxt = r.ReviewTaxt,
+                        Rating = r.Rating,
+                        ReviewDate = r.ReviewDate,
+                        CustomerName = r.customer.FName + " " + r.customer.LName
+                    }).ToList(),
+                    Images = x.productImages.Select(i => i.Image).ToList()
+                }).ToListAsync();
+            return products;
         }
 
         public async Task<string> UpdateProductAsync(int id, UpdateProductDTO updatedProduct)

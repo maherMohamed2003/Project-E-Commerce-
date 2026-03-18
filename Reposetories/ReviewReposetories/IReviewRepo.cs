@@ -1,4 +1,5 @@
-﻿using E_Commerce_Proj.DTOs.ReviewDTOs;
+﻿using E_Commerce_Proj.DTOs.Review;
+using E_Commerce_Proj.DTOs.ReviewDTOs;
 
 namespace E_Commerce_Proj.Reposetories.ReviewReposetories
 {
@@ -7,5 +8,6 @@ namespace E_Commerce_Proj.Reposetories.ReviewReposetories
         public Task<string> AddReviewAsync(int userId , int productId , AddReviewDTO rev);
         public Task<string> UpdateReviewAsync(int userId , int reviewId , AddReviewDTO rev);
         public Task<string> DeleteReviewAsync(int userId , int reviewId);
+        public Task<List<DisplayReviewDTO>> GetAllReviewsByProductIdAsync(int productId);
     }
 }

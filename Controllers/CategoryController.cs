@@ -10,14 +10,14 @@ namespace E_Commerce_Proj.Controllers
     {
         private readonly ICategoryRepo _repo;
 
-        public CategoryController(ICategoryRepo repo)
+        public CategoryController( ICategoryRepo repo)
         {
             _repo = repo;
         }
 
         [HttpPost]
         [Route("AddCategory/")]
-        public async Task<IActionResult> AddCategory(AddCategoryDTO newCategory)
+        public async Task<IActionResult> AddCategory([FromBody] AddCategoryDTO newCategory)
         {
             var result = await _repo.AddCategoryAsync(newCategory);
             if (result == "Category Added Successfully")
@@ -27,7 +27,7 @@ namespace E_Commerce_Proj.Controllers
 
         [HttpGet]
         [Route("GetOneCategory/{id}")]
-        public async Task<IActionResult> GetOneCategory(int id)
+        public async Task<IActionResult> GetOneCategory( int id)
         {
             var category = await _repo.GetOneCategoryProductsAsync(id);
             if (category == null)
@@ -44,5 +44,27 @@ namespace E_Commerce_Proj.Controllers
                 return NotFound();
             return Ok(categories);
         }
-    }
+
+        [HttpPut]
+        [Route("UpdateCategory/{id}")]
+        public async Task<IActionResult> UpdateCategory(int id, [FromBody] UpdateCategoryDTO update)
+        {
+            var category = await _repo.UpdateCategoryAsync(id, update);
+            if (category == null)
+                return NotFound();
+            return Ok(category);
+        }
+
+        [HttpDelete]
+        [Route("DeleteCategory/{id}")]
+        public async Task<IActionResult> DeleteCategory(int id)
+        {
+            var result = await _repo.DeleteCategoryAsync(id);
+            if (result == "Category Not Found" || result == "Category Is Empty")
+                return NotFound(result);
+            return Ok(result);
+        }
+
+
+        }
 }

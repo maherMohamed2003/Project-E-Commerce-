@@ -33,7 +33,7 @@ namespace E_Commerce_Proj.Controllers
         [HttpPost]
         [Route("Register/")]
         [AllowAnonymous]
-        public async Task<IActionResult> Register(RegisterDTO register)
+        public async Task<IActionResult> Register([FromBody] RegisterDTO register)
         {
             if(_context.Customers.Any(u => u.Email == register.Email))
                 return BadRequest("Email Already Exists");
@@ -65,7 +65,7 @@ namespace E_Commerce_Proj.Controllers
         [HttpGet]
         [Route("ConfirmEmail/")]
         [AllowAnonymous]
-        public async Task<IActionResult> ConfirmEmail(string token)
+        public async Task<IActionResult> ConfirmEmail([FromBody] string token)
         {
             var nowUser = await _context.Customers.FirstOrDefaultAsync(u => u.EmailToken == token);
             if (nowUser == null)
@@ -102,7 +102,7 @@ namespace E_Commerce_Proj.Controllers
         [HttpPost]
         [Route("Login/")]
         [AllowAnonymous]
-        public async Task<IActionResult> Login(LoginDTO login)
+        public async Task<IActionResult> Login([FromBody] LoginDTO login)
         {
             var user = _context.Customers.FirstOrDefault(u => u.Email == login.Email);
            
@@ -127,7 +127,7 @@ namespace E_Commerce_Proj.Controllers
 
         [HttpPut]
         [Route("EditProfile/")]
-        public async Task<IActionResult> EditProfile(EditProfileDTO edit)
+        public async Task<IActionResult> EditProfile([FromBody] EditProfileDTO edit)
         {
             var user = await _context.Customers.FirstOrDefaultAsync(u => u.FName == edit.FName && u.LName == edit.LName);
             if (user == null)
@@ -154,7 +154,7 @@ namespace E_Commerce_Proj.Controllers
             return Ok("Profile Deleted Successfully");
         }
 
-        private string GenerateToken(Customer r)
+        private string GenerateToken([FromBody] Customer r)
         {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwt.Key));
             var credintials = new SigningCredentials(key , SecurityAlgorithms.HmacSha256);
@@ -180,7 +180,7 @@ namespace E_Commerce_Proj.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        private async Task SendEmailAsync(string to, string body)
+        private async Task SendEmailAsync( string to, string body)
         {
             var smtp = new SmtpClient("smtp.gmail.com")
             {

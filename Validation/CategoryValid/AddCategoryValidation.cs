@@ -9,7 +9,7 @@ namespace E_Commerce_Proj.Validation.CategoryValid
         {
             RuleFor(x => x.CategoryName)
                 .NotEmpty().WithMessage("Category name is required.")
-                .MaximumLength(5).WithMessage("Category name must not exceed 5 characters.");
+                .MinimumLength(5).WithMessage("Category name must not exceed 5 characters.");
         }
     }
 }
