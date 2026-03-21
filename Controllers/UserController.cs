@@ -63,13 +63,13 @@ namespace E_Commerce_Proj.Controllers
         }
 
         [HttpGet]
-        [Route("ConfirmEmail/")]
+        [Route("ConfirmEmail/{token}")]
         [AllowAnonymous]
-        public async Task<IActionResult> ConfirmEmail([FromBody] string token)
+        public async Task<IActionResult> ConfirmEmail(string token)
         {
             var nowUser = await _context.Customers.FirstOrDefaultAsync(u => u.EmailToken == token);
             if (nowUser == null)
-                return NotFound("Invalid Token");
+                return NotFound("The Account Is Already Activated!");
             nowUser.IsEmailVerified = true;
             nowUser.EmailToken = "";
             await _context.SaveChangesAsync();
@@ -154,30 +154,36 @@ namespace E_Commerce_Proj.Controllers
             return Ok("Profile Deleted Successfully");
         }
 
-        private string GenerateToken([FromBody] Customer r)
+        [HttpGet]
+        [Route("GetAllUsers")]
+        public async Task<IActionResult> GetAllUsers()
         {
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwt.Key));
-            var credintials = new SigningCredentials(key , SecurityAlgorithms.HmacSha256);
-            var roles = _context.Roles.Where(r => r.customerId == r.Id).Select(r => r.Name).ToList();
-            
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.NameIdentifier,r.Id.ToString()),
-                new Claim(ClaimTypes.Email,r.Email),
-                new Claim(ClaimTypes.Name,r.FName + " " + r.LName)
-            };
-            
-            foreach(var role in roles)
-            {
-                claims.Add(new Claim(ClaimTypes.Role, role));
-            }
+            var users = await _context.Customers.ToListAsync();
+            return Ok(users);
+        }
 
-            var token = new JwtSecurityToken(
-                claims: claims,
-                expires: DateTime.Now.AddDays(7),
-                signingCredentials: credintials
-            );
-            return new JwtSecurityTokenHandler().WriteToken(token);
+
+
+        private string GenerateToken(Customer r)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Issuer = _jwt.Issuer,
+                Expires = DateTime.Now.AddSeconds(20),
+                Audience = _jwt.Audience,
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwt.Key)), SecurityAlgorithms.HmacSha256),
+                Subject = new ClaimsIdentity(new[]
+                {
+                    new Claim(ClaimTypes.Email, r.Email),
+                    new Claim(ClaimTypes.NameIdentifier , r.Id.ToString())
+                }),
+            };
+            var securityToken = tokenHandler.CreateToken(tokenDescriptor);
+            var accessToken = tokenHandler.WriteToken(securityToken);
+
+            return accessToken;
+
         }
 
         private async Task SendEmailAsync( string to, string body)

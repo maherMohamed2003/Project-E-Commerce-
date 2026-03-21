@@ -1,0 +1,164 @@
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\appsettings.Development.json
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\appsettings.json
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\dotnet-tools.json
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\E-Commerce Proj.staticwebassets.endpoints.json
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\E-Commerce Proj.exe
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\E-Commerce Proj.deps.json
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\E-Commerce Proj.runtimeconfig.json
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\E-Commerce Proj.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\E-Commerce Proj.pdb
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Azure.Core.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Azure.Identity.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\FluentValidation.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\FluentValidation.AspNetCore.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\FluentValidation.DependencyInjectionExtensions.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Humanizer.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.AspNetCore.OpenApi.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.Bcl.AsyncInterfaces.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.Bcl.Cryptography.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.Build.Framework.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.CodeAnalysis.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.CodeAnalysis.CSharp.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.CodeAnalysis.Workspaces.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.CodeAnalysis.ExternalAccess.RazorCompiler.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.Data.SqlClient.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.EntityFrameworkCore.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.EntityFrameworkCore.Abstractions.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.EntityFrameworkCore.Design.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.EntityFrameworkCore.Relational.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.EntityFrameworkCore.SqlServer.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.Extensions.DependencyModel.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.Identity.Client.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.Identity.Client.Extensions.Msal.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.IdentityModel.Abstractions.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.IdentityModel.JsonWebTokens.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.IdentityModel.Logging.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.IdentityModel.Protocols.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.IdentityModel.Tokens.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.OpenApi.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.SqlServer.Server.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.VisualStudio.SolutionPersistence.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Mono.TextTemplating.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Newtonsoft.Json.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Swashbuckle.AspNetCore.Swagger.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Swashbuckle.AspNetCore.SwaggerGen.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Swashbuckle.AspNetCore.SwaggerUI.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\System.ClientModel.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\System.CodeDom.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\System.Composition.AttributedModel.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\System.Composition.Convention.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\System.Composition.Hosting.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\System.Composition.Runtime.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\System.Composition.TypedParts.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\System.Configuration.ConfigurationManager.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\System.IdentityModel.Tokens.Jwt.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\System.Memory.Data.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\System.Security.Cryptography.ProtectedData.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\cs\Microsoft.CodeAnalysis.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\de\Microsoft.CodeAnalysis.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\es\Microsoft.CodeAnalysis.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\fr\Microsoft.CodeAnalysis.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\it\Microsoft.CodeAnalysis.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\ja\Microsoft.CodeAnalysis.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\ko\Microsoft.CodeAnalysis.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\pl\Microsoft.CodeAnalysis.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\pt-BR\Microsoft.CodeAnalysis.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\ru\Microsoft.CodeAnalysis.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\tr\Microsoft.CodeAnalysis.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\cs\Microsoft.Data.SqlClient.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\de\Microsoft.Data.SqlClient.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\es\Microsoft.Data.SqlClient.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\fr\Microsoft.Data.SqlClient.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\it\Microsoft.Data.SqlClient.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\ja\Microsoft.Data.SqlClient.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\ko\Microsoft.Data.SqlClient.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\pl\Microsoft.Data.SqlClient.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\pt-BR\Microsoft.Data.SqlClient.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\ru\Microsoft.Data.SqlClient.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\tr\Microsoft.Data.SqlClient.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\Microsoft.Data.SqlClient.SNI.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\E-Commerce Proj.csproj.AssemblyReference.cache
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\rpswa.dswa.cache.json
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\E-Commerce Proj.GeneratedMSBuildEditorConfig.editorconfig
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\E-Commerce Proj.AssemblyInfoInputs.cache
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\E-Commerce Proj.AssemblyInfo.cs
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\E-Commerce Proj.csproj.CoreCompileInputs.cache
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\E-Commerce Proj.MvcApplicationPartsAssemblyInfo.cs
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\E-Commerce Proj.MvcApplicationPartsAssemblyInfo.cache
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\E-Commerce Proj.sourcelink.json
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\rjimswa.dswa.cache.json
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\rjsmrazor.dswa.cache.json
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\rjsmcshtml.dswa.cache.json
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\scopedcss\bundle\E-Commerce Proj.styles.css
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\staticwebassets.build.json
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\staticwebassets.build.json.cache
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\staticwebassets.development.json
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\staticwebassets.build.endpoints.json
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\swae.build.ex.cache
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\staticwebassets.upToDateCheck.txt
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\E-Commer.BA6BA0BD.Up2Date
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\E-Commerce Proj.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\refint\E-Commerce Proj.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\E-Commerce Proj.pdb
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\E-Commerce Proj.genruntimeconfig.cache
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\ref\E-Commerce Proj.dll

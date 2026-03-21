@@ -571,7 +571,7 @@
   {
     "ContainingType": "E_Commerce_Proj.Controllers.UserController",
     "Method": "ConfirmEmail",
-    "RelativePath": "api/User/ConfirmEmail",
+    "RelativePath": "api/User/ConfirmEmail/{token}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -614,6 +614,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_Commerce_Proj.Controllers.UserController",
+    "Method": "GetAllUsers",
+    "RelativePath": "api/User/GetAllUsers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

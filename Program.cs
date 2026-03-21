@@ -34,7 +34,7 @@ var jwt = builder.Configuration.GetSection("JWT").Get<JWTOptions>();
 builder.Services.AddSingleton(jwt);
 #endregion
 
-builder.Services.AddAuthentication("Bearer")
+builder.Services.AddAuthentication()
     .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, o =>
     {
         o.SaveToken = true;

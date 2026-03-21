@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "A:\\Collage\\Third Year 2 sem\\Projects\\E-Commerce Proj\\E-Commerce Proj\\E-Commerce Proj.csproj": {}
+    "A:\\Collage\\Third Year 2 sem\\Projects\\E-Commerce Proj\\Githup version\\Project-E-Commerce-\\E-Commerce Proj.csproj": {}
   },
   "projects": {
-    "A:\\Collage\\Third Year 2 sem\\Projects\\E-Commerce Proj\\E-Commerce Proj\\E-Commerce Proj.csproj": {
+    "A:\\Collage\\Third Year 2 sem\\Projects\\E-Commerce Proj\\Githup version\\Project-E-Commerce-\\E-Commerce Proj.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\Collage\\Third Year 2 sem\\Projects\\E-Commerce Proj\\E-Commerce Proj\\E-Commerce Proj.csproj",
+        "projectUniqueName": "A:\\Collage\\Third Year 2 sem\\Projects\\E-Commerce Proj\\Githup version\\Project-E-Commerce-\\E-Commerce Proj.csproj",
         "projectName": "E-Commerce Proj",
-        "projectPath": "A:\\Collage\\Third Year 2 sem\\Projects\\E-Commerce Proj\\E-Commerce Proj\\E-Commerce Proj.csproj",
+        "projectPath": "A:\\Collage\\Third Year 2 sem\\Projects\\E-Commerce Proj\\Githup version\\Project-E-Commerce-\\E-Commerce Proj.csproj",
         "packagesPath": "C:\\Users\\maher\\.nuget\\packages\\",
-        "outputPath": "A:\\Collage\\Third Year 2 sem\\Projects\\E-Commerce Proj\\E-Commerce Proj\\obj\\",
+        "outputPath": "A:\\Collage\\Third Year 2 sem\\Projects\\E-Commerce Proj\\Githup version\\Project-E-Commerce-\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
