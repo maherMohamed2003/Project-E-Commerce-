@@ -29,6 +29,7 @@ A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Co
 A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\PubTmp\Out\Microsoft.IdentityModel.Tokens.dll
 A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\PubTmp\Out\Microsoft.OpenApi.dll
 A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\PubTmp\Out\Microsoft.SqlServer.Server.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\PubTmp\Out\Newtonsoft.Json.dll
 A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
 A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
 A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll

@@ -3,15 +3,18 @@ using System.Net;
 using System.Net.Mail;
 using System.Security.Claims;
 using System.Text;
+using System.Text.Json.Serialization;
 using E_Commerce_Proj.Authentication;
 using E_Commerce_Proj.Data;
 using E_Commerce_Proj.DTOs.User;
+using E_Commerce_Proj.DTOs.UserDTOs;
 using E_Commerce_Proj.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using storeProject.Models;
 
 namespace E_Commerce_Proj.Controllers
@@ -55,7 +58,7 @@ namespace E_Commerce_Proj.Controllers
             await _context.Customers.AddAsync(newUser);
             await _context.SaveChangesAsync();
             
-            var confirmationLink = $"{Request.Scheme}://{Request.Host}/api/User/ConfirmEmail?token={newUser.EmailToken}";
+            var confirmationLink = $"{Request.Scheme}://{Request.Host}/api/User/ConfirmEmail/{newUser.EmailToken}";
             await SendEmailAsync(newUser.Email, $"Confirm your Email:\n{confirmationLink}");
 
             return Ok("Check your email to confirm your account");
@@ -111,7 +114,7 @@ namespace E_Commerce_Proj.Controllers
 
             if (!user.IsEmailVerified)
             {
-                await SendEmailAsync(user.Email, $"Please Verify Your Email To Login:\n{Request.Scheme}://{Request.Host}/api/User/ConfirmEmail?token={user.EmailToken}");
+                await SendEmailAsync(user.Email, $"Please Verify Your Email To Login:\n{Request.Scheme}://{Request.Host}/api/User/ConfirmEmail/{user.EmailToken}");
                 return BadRequest("Please Check Your Email To Verify First");
             }
 
@@ -149,6 +152,12 @@ namespace E_Commerce_Proj.Controllers
             var user = await _context.Customers.FirstOrDefaultAsync(u => u.Id == id);
             if (user == null)
                 return NotFound("User Not Found");
+            var cart = await _context.Carts.FirstOrDefaultAsync(c => c.CustomerId == id);
+            var fav = await _context.Favourites.FirstOrDefaultAsync(f => f.CustomerId == id);
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.customerId == id);
+            _context.Roles.Remove(role);
+            _context.Favourites.Remove(fav);
+            _context.Carts.Remove(cart);
             _context.Customers.Remove(user);
             await _context.SaveChangesAsync();
             return Ok("Profile Deleted Successfully");
@@ -161,6 +170,50 @@ namespace E_Commerce_Proj.Controllers
             var users = await _context.Customers.ToListAsync();
             return Ok(users);
         }
+
+
+        [HttpPost("facebook")]
+        [AllowAnonymous]
+        public async Task<IActionResult> FacebookLogin([FromBody] FacebookLoginRequest request)
+        {
+            var httpClient = new HttpClient();
+
+            var response = await httpClient.GetAsync(
+                $"https://graph.facebook.com/me?fields=id,name,email&access_token={request.token}");
+
+            if (!response.IsSuccessStatusCode)
+                return BadRequest("Invalid Facebook Token");
+
+            var content = await response.Content.ReadAsStringAsync();
+
+            dynamic data = JsonConvert.DeserializeObject(content);
+
+            string email = data.email;
+            string name = data.name;
+
+            var user = await _context.Customers.FirstOrDefaultAsync(x => x.Email == email);
+
+            if (user == null)
+            {
+                user = new Customer
+                {
+                    FName = name,
+                    Email = email
+                };
+
+                await _context.Customers.AddAsync(user);
+            }
+
+            var token = GenerateToken(user);
+
+            return Ok(new
+            {
+                token = token,
+                email = email,
+                name = name
+            });
+        }
+
 
 
 

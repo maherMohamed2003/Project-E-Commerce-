@@ -618,6 +618,22 @@
   },
   {
     "ContainingType": "E_Commerce_Proj.Controllers.UserController",
+    "Method": "FacebookLogin",
+    "RelativePath": "api/User/facebook",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "E_Commerce_Proj.DTOs.UserDTOs.FacebookLoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_Commerce_Proj.Controllers.UserController",
     "Method": "GetAllUsers",
     "RelativePath": "api/User/GetAllUsers",
     "HttpMethod": "GET",
