@@ -19,11 +19,28 @@ namespace E_Commerce_Proj.Reposetories.OrderReposetories
 
         public async Task<string> CancelOrderAsync(int orderId)
         {
-            var order = await _context.Orders.FindAsync(orderId);
+            var order = await _context.Orders.FirstOrDefaultAsync(o => o.Id == orderId);
             if (order == null)
             {
                 return "Order not found.";
             }
+
+            var orderItems = await _context.OrderItems.Where(x => x.OrderId == orderId).ToListAsync();
+            if(orderItems == null || orderItems.Count == 0)
+            {
+                return "No items found for this order.";
+            }
+
+            
+            foreach (var item in orderItems)
+            {
+                Product product = await _context.Products.FirstOrDefaultAsync(p => p.Id == item.ProductId);
+                if (product != null)
+                {
+                    product.Quantity += item.Quantity;
+                }
+            }
+            
             await _context.OrderItems.Where(o => o.OrderId == orderId).ForEachAsync(oi => _context.OrderItems.Remove(oi));
             _context.Orders.Remove(order);
             await _context.SaveChangesAsync();
@@ -65,14 +82,23 @@ namespace E_Commerce_Proj.Reposetories.OrderReposetories
                 };
                 await _context.OrderItems.AddAsync(orderItem);
                 price += item.product.Price * item.Quantity;
+
+                var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == item.ProductId);
+                if (product != null)
+                {
+                    product.Quantity -= item.Quantity;
+                }
+
             }
             order.TotalPrice = price;
             await _context.SaveChangesAsync();
             
             var info = new DisplayOrderDetails
             {
+                Id = order.Id,
                 Items = cartItems.Select(x => new DisplayOrderItem {
-                Quantity = x.Quantity,
+                    Id = x.Id,
+                    Quantity = x.Quantity,
                 ProductName = x.product.Name,
                 PricePerUnit = x.product.Price
                 }).ToList(),
@@ -94,6 +120,7 @@ namespace E_Commerce_Proj.Reposetories.OrderReposetories
         {
             var orders = await _context.Orders.Select(x => new DisplayOrderDetails
             {
+                Id = x.Id,
                 Items = x.orderItems.Select(oi => new DisplayOrderItem
                 {
                     ProductName = oi.product.Name,
@@ -116,6 +143,7 @@ namespace E_Commerce_Proj.Reposetories.OrderReposetories
         {
             var userOrders =  await _context.Orders.Where(x => x.CustomerId == userId).Select(x => new DisplayOrderDetails
             {
+                Id = x.Id,
                 Items = x.orderItems.Select(oi => new DisplayOrderItem
                 {
                     ProductName = oi.product.Name,
@@ -131,6 +159,20 @@ namespace E_Commerce_Proj.Reposetories.OrderReposetories
             }).ToListAsync();
 
             return userOrders;
+        }
+
+        public async Task<OrdersOverviewDTO> GetOrdersOverviewAsync()
+        {
+            var numberOfOrders = await _context.Orders.CountAsync();
+            var numberOfPendingOrders = await _context.Orders.Where(x => x.OrderStatus == "Pending").CountAsync();
+            var numberOfCompletedOrders = await _context.Orders.Where(x => x.OrderStatus == "Completed").CountAsync();
+            var res = new OrdersOverviewDTO
+            {
+                NumberOfAllOrders = numberOfOrders,
+                NumberOfPendingOrders = numberOfPendingOrders,
+                NumberOfCompletedOrders = numberOfCompletedOrders
+            };
+            return res;
         }
     }
 }

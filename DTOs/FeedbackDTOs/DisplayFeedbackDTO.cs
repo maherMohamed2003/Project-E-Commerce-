@@ -2,6 +2,7 @@
 {
     public class DisplayFeedback
     {
+        public int Id { get; set; }
         public string Comment { get; set; }
         public DateTime FeedBackDate { get; set; }
         public string AuthorName { get; set; }

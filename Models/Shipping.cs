@@ -14,7 +14,7 @@ namespace storeProject.Models
         public string TrackingNumber { get; set; }
         public string ShippingStatus { get; set; }
         public DateTime EstimatedDate { get; set; }
-        public DateTime? ActualDate { get; set; }
+        public DateTime? ExpectedDate { get; set; }
         public int OrderId { get; set; }
         public Order order { get; set; }
     }

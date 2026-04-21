@@ -46,10 +46,10 @@ namespace E_Commerce_Proj.Controllers
         }
 
         [HttpPut]
-        [Route("UpdateCategory/{id}")]
-        public async Task<IActionResult> UpdateCategory(int id, [FromBody] UpdateCategoryDTO update)
+        [Route("UpdateCategory/")]
+        public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryDTO update)
         {
-            var category = await _repo.UpdateCategoryAsync(id, update);
+            var category = await _repo.UpdateCategoryAsync(update.id, update);
             if (category == null)
                 return NotFound();
             return Ok(category);

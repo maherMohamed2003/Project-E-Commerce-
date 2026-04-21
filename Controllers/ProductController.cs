@@ -47,10 +47,10 @@ namespace E_Commerce_Proj.Controllers
         }
 
         [HttpPut]
-        [Route("UpdateProduct/{id}")]
-        public async Task<IActionResult> UpdateProduct( int id, UpdateProductDTO updatedProduct)
+        [Route("UpdateProduct/")]
+        public async Task<IActionResult> UpdateProduct(UpdateProductDTO updatedProduct)
         {
-            var result = await _repo.UpdateProductAsync(id, updatedProduct);
+            var result = await _repo.UpdateProductAsync(updatedProduct.Id, updatedProduct);
             if (result == "Product updated successfully.")
                 return Ok(result);
             return BadRequest(result);
@@ -76,5 +76,21 @@ namespace E_Commerce_Proj.Controllers
             return Ok(products);
         }
 
+        [HttpGet]
+        [Route("GetProductCards/{categoryId}")]
+        public async Task<IActionResult> GetListOfProductCards(int categoryId)
+        {
+            var res = await _repo.GetProductSliderCategory(categoryId);
+            return Ok(res);
         }
+
+        [HttpGet]
+        [Route("GetProductsOverview")]
+        public async Task<IActionResult> GetProductsOverview()
+        {
+            var res = await _repo.GetAllProductsOverViewAsync();
+            return Ok(res);
+        }
+
+    }
 }

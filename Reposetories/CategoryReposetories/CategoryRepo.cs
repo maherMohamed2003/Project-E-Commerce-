@@ -55,21 +55,25 @@ namespace E_Commerce_Proj.Reposetories.CategoryReposetories
         {
             var categories = await _context.Categories.Select(c => new DisplayCategoryDTO
             {
+                Id = c.Id,
                 CategoryName = c.Name,
                 Products = c.products.Select(p => new DisplayProductDTO
                 {
+                    Id = p.Id,
                     Name = p.Name,
                     Price = p.Price,
                     Description = p.Description,
                     Quantity = p.Quantity,
                     CategoryName = c.Name,
-                    Images = p.productImages.Select(i => i.Image).ToList(),
+                    Image = p.ImageURL,
                     Reviews = p.reviews.Select(r => new DisplayReviewDTO
                     {
                         Rating = r.Rating,
                         ReviewTaxt = r.ReviewTaxt,
                         ReviewDate = r.ReviewDate
-                    }).ToList()
+                    }).ToList(),
+                    Discount = p.Discount,
+                    Rate = p.Rate
                 }).ToList()
             }).ToListAsync();
             return categories;
@@ -79,21 +83,25 @@ namespace E_Commerce_Proj.Reposetories.CategoryReposetories
         {
             var category = _context.Categories.Where(c => c.Id == id).Select(c => new DisplayCategoryDTO
             {
+                Id = c.Id,
                 CategoryName = c.Name,
                 Products = c.products.Select(p => new DisplayProductDTO
                 {
+                    Id = p.Id,
                     Name = p.Name,
                     Price = p.Price,
                     Description = p.Description,
                     Quantity = p.Quantity,
                     CategoryName = c.Name,
-                    Images = p.productImages.Select(i => i.Image).ToList(),
+                    Image = p.ImageURL,
                     Reviews = p.reviews.Select(r => new DisplayReviewDTO
                     {
                         Rating = r.Rating,
                         ReviewTaxt = r.ReviewTaxt,
                         ReviewDate = r.ReviewDate
-                    }).ToList()
+                    }).ToList(),
+                    Discount = p.Discount,
+                    Rate = p.Rate
                 }).ToList()
             }).FirstOrDefaultAsync();
             return category;

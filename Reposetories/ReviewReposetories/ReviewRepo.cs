@@ -24,7 +24,7 @@ namespace E_Commerce_Proj.Reposetories.ReviewReposetories
             var newReview = new Review
             {
                 ProductId = productId,
-                ReviewTaxt = rev.ReviewTaxt,
+                ReviewTaxt = rev.ReviewText,
                 Rating = rev.Rating,
                 CustomerId = userId,
                 ReviewDate = DateTime.Now
@@ -34,9 +34,9 @@ namespace E_Commerce_Proj.Reposetories.ReviewReposetories
             return "Review added successfully";
         }
 
-        public async Task<string> DeleteReviewAsync(int userId, int reviewId)
+        public async Task<string> DeleteReviewAsync(int reviewId)
         {
-            var rev = await _context.Reviews.FirstOrDefaultAsync(x => x.Id == reviewId && userId == x.CustomerId);
+            var rev = await _context.Reviews.FirstOrDefaultAsync(x => x.Id == reviewId);
             if (rev == null)
                 return "NotFound";
             _context.Reviews.Remove(rev);
@@ -50,6 +50,7 @@ namespace E_Commerce_Proj.Reposetories.ReviewReposetories
             var reviews = await _context.Reviews.Where(x => x.ProductId == productId)
                 .Select(x => new DisplayReviewDTO
                 {
+                    Id = x.Id,
                     ReviewTaxt = x.ReviewTaxt,
                     Rating = x.Rating,
                     CustomerName = x.customer.FName + " " + x.customer.LName,
@@ -58,12 +59,12 @@ namespace E_Commerce_Proj.Reposetories.ReviewReposetories
             return reviews;
         }
 
-        public async Task<string> UpdateReviewAsync(int userId, int reviewId, AddReviewDTO rev)
+        public async Task<string> UpdateReviewAsync(int userId, int reviewId, UpdateReviewDTO rev)
         {
             var review = await _context.Reviews.FirstOrDefaultAsync(x => x.Id == reviewId && userId == x.CustomerId);
             if (review == null)
                 return "NotFound";
-            review.ReviewTaxt = rev.ReviewTaxt;
+            review.ReviewTaxt = rev.ReviewText;
             review.Rating = rev.Rating;
             _context.Reviews.Update(review);
             _context.SaveChanges();

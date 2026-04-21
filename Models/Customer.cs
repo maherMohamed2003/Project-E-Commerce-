@@ -18,6 +18,8 @@ namespace storeProject.Models
         public DateTime RegisterDate { get; set; } = DateTime.Now;
         public bool IsEmailVerified { get; set; } = false;
         public string EmailToken { get; set; }
+        public bool isBlocked { get; set; } = false;
+        public DateTime? BlockDate { get; set; }
         public Cart cart {  get; set; }
         public Favourite Favourite {  get; set; }
         public int RoleId { get; set; }

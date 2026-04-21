@@ -6,8 +6,8 @@ namespace E_Commerce_Proj.Reposetories.ReviewReposetories
     public interface IReviewRepo
     {
         public Task<string> AddReviewAsync(int userId , int productId , AddReviewDTO rev);
-        public Task<string> UpdateReviewAsync(int userId , int reviewId , AddReviewDTO rev);
-        public Task<string> DeleteReviewAsync(int userId , int reviewId);
+        public Task<string> UpdateReviewAsync(int userId , int reviewId , UpdateReviewDTO rev);
+        public Task<string> DeleteReviewAsync( int reviewId);
         public Task<List<DisplayReviewDTO>> GetAllReviewsByProductIdAsync(int productId);
     }
 }

@@ -2,7 +2,9 @@
 {
     public class AddReviewDTO
     {
-        public string ReviewTaxt { get; set; }
+        public int UserId { get; set; }
+        public int ProductId { get; set; }
+        public string ReviewText { get; set; }
         public int Rating { get; set; }
     }
 }

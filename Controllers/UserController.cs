@@ -50,7 +50,9 @@ namespace E_Commerce_Proj.Controllers
                 FName = register.FName,
                 LName = register.LName,
                 EmailToken = Guid.NewGuid().ToString(),
-                Email = register.Email
+                Email = register.Email,
+                BlockDate = null,
+                isBlocked = false
             };
 
 
@@ -112,6 +114,9 @@ namespace E_Commerce_Proj.Controllers
             if (user == null)
                 return NotFound("Invalid Email Or Password");
 
+            if (user.isBlocked == true)
+                return BadRequest($"You Are Blocked to {user.BlockDate.Value.AddDays(40)}");
+
             if (!user.IsEmailVerified)
             {
                 await SendEmailAsync(user.Email, $"Please Verify Your Email To Login:\n{Request.Scheme}://{Request.Host}/api/User/ConfirmEmail/{user.EmailToken}");
@@ -132,12 +137,11 @@ namespace E_Commerce_Proj.Controllers
         [Route("EditProfile/")]
         public async Task<IActionResult> EditProfile([FromBody] EditProfileDTO edit)
         {
-            var user = await _context.Customers.FirstOrDefaultAsync(u => u.FName == edit.FName && u.LName == edit.LName);
+            var user = await _context.Customers.FirstOrDefaultAsync(u => u.Id == edit.userId);
             if (user == null)
                 return NotFound("User Not Found");
             user.FName = edit.FName;
             user.LName = edit.LName;
-            user.Email = edit.Email;
             var hasher = new PasswordHasher<Customer>();
             user.Password = hasher.HashPassword(user, edit.Password);
             await _context.SaveChangesAsync();
@@ -146,7 +150,6 @@ namespace E_Commerce_Proj.Controllers
 
         [HttpDelete]
         [Route("DeleteProfile/{id}")]
-        [AllowAnonymous]
         public async Task<IActionResult> DeleteProfile(int id)
         {
             var user = await _context.Customers.FirstOrDefaultAsync(u => u.Id == id);
@@ -155,9 +158,11 @@ namespace E_Commerce_Proj.Controllers
             var cart = await _context.Carts.FirstOrDefaultAsync(c => c.CustomerId == id);
             var fav = await _context.Favourites.FirstOrDefaultAsync(f => f.CustomerId == id);
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.customerId == id);
-            _context.Roles.Remove(role);
-            _context.Favourites.Remove(fav);
-            _context.Carts.Remove(cart);
+            if(cart != null) { 
+                _context.Roles.Remove(role);
+                _context.Favourites.Remove(fav);
+                _context.Carts.Remove(cart);
+            }
             _context.Customers.Remove(user);
             await _context.SaveChangesAsync();
             return Ok("Profile Deleted Successfully");
@@ -167,10 +172,43 @@ namespace E_Commerce_Proj.Controllers
         [Route("GetAllUsers")]
         public async Task<IActionResult> GetAllUsers()
         {
-            var users = await _context.Customers.ToListAsync();
+            var users = await _context.Customers.Select(x => new DisplayUserInfo
+            {
+                Id = x.Id,
+                FName = x.FName,
+                LName = x.LName,
+                Email = x.Email,
+                isBlocked = x.isBlocked
+            }).ToListAsync();
             return Ok(users);
         }
 
+
+        [HttpPost]
+        [Route("BlockUser")]
+        public async Task<IActionResult> BlockUser(int id)
+        {
+            var user = await _context.Customers.FirstOrDefaultAsync(x => x.Id == id);
+            if (user == null)
+                return NotFound("User Not Found");
+            user.isBlocked = true;
+            user.BlockDate = DateTime.Now;
+            await _context.SaveChangesAsync();
+            return Ok("User Is Blocked Now");
+        }
+
+        [HttpPost]
+        [Route("UnBlockUser")]
+        public async Task<IActionResult> UnBlockUser(int id)
+        {
+            var user = await _context.Customers.FirstOrDefaultAsync(x => x.Id == id);
+            if (user == null)
+                return NotFound("User Not Found");
+            user.isBlocked = false;
+            user.BlockDate = null;
+            await _context.SaveChangesAsync();
+            return Ok("User Is Not Blocked Now");
+        }
 
         [HttpPost("facebook")]
         [AllowAnonymous]
@@ -223,7 +261,7 @@ namespace E_Commerce_Proj.Controllers
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Issuer = _jwt.Issuer,
-                Expires = DateTime.Now.AddSeconds(20),
+                Expires = DateTime.Now.AddDays(7),
                 Audience = _jwt.Audience,
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwt.Key)), SecurityAlgorithms.HmacSha256),
                 Subject = new ClaimsIdentity(new[]

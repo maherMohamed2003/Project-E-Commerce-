@@ -1,6 +1,7 @@
 ﻿using E_Commerce_Proj.DTOs.ReviewDTOs;
 using E_Commerce_Proj.Reposetories.ReviewReposetories;
 using Microsoft.AspNetCore.Mvc;
+using storeProject.Models;
 
 namespace E_Commerce_Proj.Controllers
 {
@@ -16,22 +17,22 @@ namespace E_Commerce_Proj.Controllers
         }
 
         [HttpPost]
-        [Route("AddReview/{userId}/{reviewId}/")]
-        public async Task<IActionResult> AddReview(int userId, int productId, [FromBody] AddReviewDTO rev)
+        [Route("AddReview/")]
+        public async Task<IActionResult> AddReview([FromBody] AddReviewDTO rev)
         {
-            var result = await _repo.AddReviewAsync(userId, productId, rev);
-            if (result == "Review added successfully")
+            var result = await _repo.AddReviewAsync(rev.UserId, rev.ProductId, rev);
+            if (result != "Review added successfully")
             {
-                return Ok(result);
+                return BadRequest();
             }
-            return BadRequest();
+            return Ok(result);
         }
 
         [HttpPut]
-        [Route("UpdateReview/{userId}/{reviewId}/")]
-        public async Task<IActionResult> UpdateReview( int userId, int reviewId, [FromBody] AddReviewDTO rev)
+        [Route("UpdateReview/")]
+        public async Task<IActionResult> UpdateReview( [FromBody] UpdateReviewDTO rev)
         {
-            var result = await _repo.UpdateReviewAsync(userId, reviewId, rev);
+            var result = await _repo.UpdateReviewAsync(rev.UserId, rev.ReviewId, rev);
             if (result == "Review updated successfully")
             {
                 return Ok(result);
@@ -41,10 +42,10 @@ namespace E_Commerce_Proj.Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteReview/{userId}/")]
-        public async Task<IActionResult> DeleteReview(int userId, [FromBody] int reviewId)
+        [Route("DeleteReview/")]
+        public async Task<IActionResult> DeleteReview(int reviewId)
         {
-            var result = await _repo.DeleteReviewAsync(userId, reviewId);
+            var result = await _repo.DeleteReviewAsync(reviewId);
             if (result == "Review deleted successfully")
             {
                 return Ok(result);

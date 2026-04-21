@@ -58,5 +58,13 @@ namespace E_Commerce_Proj.Controllers
         }
 
 
+        [HttpGet]
+        [Route("OrdersOverview")]
+        public async Task<IActionResult> OrdersOverview()
+        {
+            var result = await _orderRepo.GetOrdersOverviewAsync();
+            return Ok(result);
+
         }
+    }
 }

@@ -11,7 +11,7 @@ namespace E_Commerce_Proj.Validation.ReviewValid
                 .InclusiveBetween(1, 5)
                 .WithMessage("Rating must be between 1 and 5.");
 
-               RuleFor(r => r.ReviewTaxt)
+               RuleFor(r => r.ReviewText)
                 .MaximumLength(500)
                 .WithMessage("Comment cannot exceed 500 characters.");
         }

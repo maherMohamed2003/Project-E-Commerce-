@@ -162,3 +162,4 @@ A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Co
 A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\E-Commerce Proj.pdb
 A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\E-Commerce Proj.genruntimeconfig.cache
 A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\obj\Release\net10.0\win-x86\ref\E-Commerce Proj.dll
+A:\Collage\Third Year 2 sem\Projects\E-Commerce Proj\Githup version\Project-E-Commerce-\bin\Release\net10.0\win-x86\E-Commerce Proj.staticwebassets.runtime.json

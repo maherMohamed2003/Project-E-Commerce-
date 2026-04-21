@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "cOAoqTJVqsU=",
+  "dgSpecHash": "Hv/Dp9RH/q0=",
   "success": true,
   "projectFilePath": "A:\\Collage\\Third Year 2 sem\\Projects\\E-Commerce Proj\\Githup version\\Project-E-Commerce-\\E-Commerce Proj.csproj",
   "expectedPackageFiles": [
@@ -59,7 +59,8 @@
     "C:\\Users\\maher\\.nuget\\packages\\system.identitymodel.tokens.jwt\\8.0.1\\system.identitymodel.tokens.jwt.8.0.1.nupkg.sha512",
     "C:\\Users\\maher\\.nuget\\packages\\system.memory.data\\8.0.1\\system.memory.data.8.0.1.nupkg.sha512",
     "C:\\Users\\maher\\.nuget\\packages\\system.security.cryptography.pkcs\\9.0.4\\system.security.cryptography.pkcs.9.0.4.nupkg.sha512",
-    "C:\\Users\\maher\\.nuget\\packages\\system.security.cryptography.protecteddata\\9.0.4\\system.security.cryptography.protecteddata.9.0.4.nupkg.sha512"
+    "C:\\Users\\maher\\.nuget\\packages\\system.security.cryptography.protecteddata\\9.0.4\\system.security.cryptography.protecteddata.9.0.4.nupkg.sha512",
+    "C:\\Users\\maher\\.nuget\\packages\\microsoft.netcore.app.host.win-x86\\10.0.6\\microsoft.netcore.app.host.win-x86.10.0.6.nupkg.sha512"
   ],
   "logs": []
 }

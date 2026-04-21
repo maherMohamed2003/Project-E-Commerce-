@@ -22,10 +22,7 @@ namespace E_Commerce_Proj.Configuration
                 .HasForeignKey(x => x.CategoryId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasMany(x => x.productImages)
-                .WithOne(x => x.product)
-                .HasForeignKey(x => x.ProductId)
-                .OnDelete(DeleteBehavior.Cascade);
+           
 
             builder.HasMany(x => x.reviews)
                 .WithOne(x => x.product)

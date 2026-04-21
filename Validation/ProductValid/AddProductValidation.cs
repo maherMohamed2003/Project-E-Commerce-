@@ -9,7 +9,7 @@ namespace E_Commerce_Proj.Validation.ProductValid
         {
             RuleFor(x => x.Name)
                 .NotEmpty().WithMessage("Product name is required.")
-                .MaximumLength(50).WithMessage("Product name must not exceed 5 characters.");
+                .MaximumLength(50).WithMessage("Product name must not exceed 50 characters.");
 
             RuleFor(x => x.Description)
                 .NotEmpty().WithMessage("Product description is required.")
@@ -20,6 +20,16 @@ namespace E_Commerce_Proj.Validation.ProductValid
 
             RuleFor(x => x.Quantity)
                 .GreaterThan(0).WithMessage("Product quantity must be greater than 0.");
+
+            RuleFor(x => x.Rate)
+                .Must(x => x >= 0 && x <= 5)
+                .WithMessage("Invalid Rate Value");
+
+            RuleFor(x => x.Discount)
+                .Must(x => x >= 0 && x <= 99)
+                .WithMessage("Invalid Discount Value");
+
+
 
         }
     }

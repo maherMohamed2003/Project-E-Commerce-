@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace E_Commerce_Proj.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260318000023_AddEmailConfirmation")]
-    partial class AddEmailConfirmation
+    [Migration("20260416110505_FinalEditsInDB")]
+    partial class FinalEditsInDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -114,6 +114,9 @@ namespace E_Commerce_Proj.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("BlockDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -149,32 +152,12 @@ namespace E_Commerce_Proj.Migrations
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("isBlocked")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
-                });
-
-            modelBuilder.Entity("storeProject.Models.CustomerPhone", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
-
-                    b.ToTable("customerPhones");
                 });
 
             modelBuilder.Entity("storeProject.Models.FavoriteItem", b =>
@@ -251,6 +234,10 @@ namespace E_Commerce_Proj.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(18,2)");
 
@@ -303,6 +290,10 @@ namespace E_Commerce_Proj.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
+                    b.Property<string>("ImageURL")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -319,28 +310,6 @@ namespace E_Commerce_Proj.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("storeProject.Models.ProductImage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<byte[]>("Image")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductImages");
                 });
 
             modelBuilder.Entity("storeProject.Models.Review", b =>
@@ -480,17 +449,6 @@ namespace E_Commerce_Proj.Migrations
                     b.Navigation("product");
                 });
 
-            modelBuilder.Entity("storeProject.Models.CustomerPhone", b =>
-                {
-                    b.HasOne("storeProject.Models.Customer", "customer")
-                        .WithMany("customerPhones")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("customer");
-                });
-
             modelBuilder.Entity("storeProject.Models.FavoriteItem", b =>
                 {
                     b.HasOne("E_Commerce_Proj.Models.Favourite", "Favourite")
@@ -561,17 +519,6 @@ namespace E_Commerce_Proj.Migrations
                     b.Navigation("category");
                 });
 
-            modelBuilder.Entity("storeProject.Models.ProductImage", b =>
-                {
-                    b.HasOne("storeProject.Models.Product", "product")
-                        .WithMany("productImages")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("product");
-                });
-
             modelBuilder.Entity("storeProject.Models.Review", b =>
                 {
                     b.HasOne("storeProject.Models.Customer", "customer")
@@ -635,8 +582,6 @@ namespace E_Commerce_Proj.Migrations
                     b.Navigation("cart")
                         .IsRequired();
 
-                    b.Navigation("customerPhones");
-
                     b.Navigation("feedBacks");
 
                     b.Navigation("orders");
@@ -661,8 +606,6 @@ namespace E_Commerce_Proj.Migrations
                     b.Navigation("favoriteItems");
 
                     b.Navigation("orderItems");
-
-                    b.Navigation("productImages");
 
                     b.Navigation("reviews");
                 });

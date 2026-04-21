@@ -20,6 +20,11 @@ namespace E_Commerce_Proj.Reposetories.CartReposetories
             var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == itemDTO.ProductId);
             if (nowUser == null || product == null)
                 return "Something Went Wrong";
+
+            if(product.Quantity < itemDTO.Quantity)
+                return $"Only {product.Quantity} Items Available In Stock";
+
+
             var checkFound = await _context.CartItems.FirstOrDefaultAsync(x => x.CartId == nowUser.cart.Id && x.ProductId == itemDTO.ProductId);
             if(checkFound != null)
             {
@@ -53,6 +58,7 @@ namespace E_Commerce_Proj.Reposetories.CartReposetories
         {
             var cartItems = _context.CartItems.Include(x => x.product).Where(x => x.cart.CustomerId == id).Select(x => new DisplayCartItemDTO
                 {
+                    Id = x.Id,
                     ProductName = x.product.Name,
                     Quentity = x.Quantity
                 }).ToListAsync();

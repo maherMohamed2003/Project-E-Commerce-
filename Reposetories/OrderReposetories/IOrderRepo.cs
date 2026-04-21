@@ -8,5 +8,7 @@ namespace E_Commerce_Proj.Reposetories.OrderReposetories
         public Task<List<DisplayOrderDetails>>  DisplayOrdersPerUserAsync(int userId);
         public Task<List<DisplayOrderDetails>> DisplayAllOrdersAsync();
         public Task<string> CancelOrderAsync(int orderId);
+
+        public Task<OrdersOverviewDTO>  GetOrdersOverviewAsync();
     }
 }

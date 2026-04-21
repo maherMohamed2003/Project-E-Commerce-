@@ -17,7 +17,7 @@ namespace E_CommerceApi.Middlewares
             _cnt++;
             if (DateTime.Now.Subtract(_start).Seconds <= 10)
             {
-                if (_cnt < 5)
+                if (_cnt < 50)
                 {
                     await _next(context);
                 }

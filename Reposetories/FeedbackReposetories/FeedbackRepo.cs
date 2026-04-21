@@ -41,6 +41,7 @@ namespace E_Commerce_Proj.Abstracts.Feedback
         {
             var feedbacks = await _context.feedBacks.Where(x => x.CustomerId == userId).Select(x => new DisplayFeedback
             {
+                Id = x.Id,
                 Comment = x.Comment,
                 FeedBackDate = x.FeedBackDate,
                 AuthorName = x.customer.FName + " " + x.customer.LName
@@ -54,6 +55,7 @@ namespace E_Commerce_Proj.Abstracts.Feedback
         {
             var feedbacks = _context.feedBacks.Select(x => new DisplayFeedback
             {
+                Id = x.Id,
                 Comment = x.Comment,
                 FeedBackDate = x.FeedBackDate,
                 AuthorName = x.customer.FName + " " + x.customer.LName

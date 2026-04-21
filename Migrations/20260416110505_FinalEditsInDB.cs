@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace E_Commerce_Proj.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class FinalEditsInDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -37,6 +37,8 @@ namespace E_Commerce_Proj.Migrations
                     RegisterDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsEmailVerified = table.Column<bool>(type: "bit", nullable: false),
                     EmailToken = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    isBlocked = table.Column<bool>(type: "bit", nullable: false),
+                    BlockDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     RoleId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -54,6 +56,7 @@ namespace E_Commerce_Proj.Migrations
                     Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
+                    ImageURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -163,26 +166,6 @@ namespace E_Commerce_Proj.Migrations
                         name: "FK_Roles_Customers_customerId",
                         column: x => x.customerId,
                         principalTable: "Customers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProductImages",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Image = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductImages", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ProductImages_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -370,11 +353,6 @@ namespace E_Commerce_Proj.Migrations
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductImages_ProductId",
-                table: "ProductImages",
-                column: "ProductId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
                 table: "Products",
                 column: "CategoryId");
@@ -415,9 +393,6 @@ namespace E_Commerce_Proj.Migrations
 
             migrationBuilder.DropTable(
                 name: "OrderItems");
-
-            migrationBuilder.DropTable(
-                name: "ProductImages");
 
             migrationBuilder.DropTable(
                 name: "Reviews");
