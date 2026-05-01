@@ -128,11 +128,11 @@ namespace E_Commerce_Proj.Reposetories.ProductReposetories
             return res;
         }
 
-        public async Task<DisplayProductDTO> GetOneProductAsync(int id)
+        public async Task<DisplayProductDetailsDTO> GetOneProductAsync(int id)
         {
             var product = await _context.Products
                 .Where(p => p.Id == id)
-                .Select(p => new DisplayProductDTO
+                .Select(p => new DisplayProductDetailsDTO
                 {
                     Id = p.Id,
                     Name = p.Name,
@@ -150,7 +150,8 @@ namespace E_Commerce_Proj.Reposetories.ProductReposetories
                     Image = p.ImageURL,
 
                     Discount = p.Discount,
-                    Rate = p.Rate
+                    Rate = p.Rate,
+                    numberOfReviews = p.reviews.Count()
                 })
                 .FirstOrDefaultAsync();
             if (product == null)

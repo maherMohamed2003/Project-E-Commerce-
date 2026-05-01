@@ -10,5 +10,6 @@ namespace E_Commerce_Proj.Reposetories.CategoryReposetories
         public Task<List<DisplayCategoryDTO>> GetAllCategoriesProductsAsync();
         public Task<DisplayCategoryDTO> UpdateCategoryAsync(int id , UpdateCategoryDTO update);
         public Task<string> DeleteCategoryAsync(int id);
+        public Task<List<DisplayCategoriesNamesDTO>> GetCategoriesNamesAsync();
     }
 }

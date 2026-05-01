@@ -66,5 +66,16 @@ namespace E_Commerce_Proj.Controllers
             return Ok(result);
 
         }
+
+        [HttpGet]
+        [Route("DisplayOrderDetails/{orderId}")]
+        public async Task<IActionResult> DisplayOrderDetails(int orderId)
+        {
+            var result = await _orderRepo.DisplayOrderDetailsAsync(orderId);
+            if (result == null)
+                return NotFound("No Orders Found For This User!");
+            return Ok(result);
+        }
+
     }
 }

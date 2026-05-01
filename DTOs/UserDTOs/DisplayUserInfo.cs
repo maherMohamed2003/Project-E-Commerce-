@@ -1,4 +1,7 @@
-﻿namespace E_Commerce_Proj.DTOs.UserDTOs
+﻿using E_Commerce_Proj.DTOs.RoleDTOs;
+using storeProject.Models;
+
+namespace E_Commerce_Proj.DTOs.UserDTOs
 {
     public class DisplayUserInfo
     {
@@ -7,5 +10,6 @@
         public string LName { get; set; }
         public string Email { get; set; }
         public bool isBlocked { get; set; }
+        public List<DisplayRoleDTO> Roles { get; set; }
     }
 }

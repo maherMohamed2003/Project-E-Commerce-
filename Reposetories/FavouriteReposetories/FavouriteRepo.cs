@@ -59,7 +59,19 @@ namespace E_Commerce_Proj.Reposetories.FavouriteReposetories
             {
                 var prod = await _repo.GetOneProductAsync(id);
                 if (prod == null) continue;
-                res.Add(prod);
+                var product = new DisplayProductDTO
+                {
+                    Name = prod.Name,
+                    Description = prod.Description,
+                    Price = prod.Price,
+                    Quantity = prod.Quantity,
+                    CategoryName = prod.CategoryName,
+                    Image = prod.Image,
+                    Rate = prod.Rate,
+                    Discount = prod.Discount,
+                    Reviews = prod.Reviews
+                };
+                res.Add(product);
             }
             return res;
         }

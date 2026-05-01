@@ -64,7 +64,17 @@ namespace E_Commerce_Proj.Controllers
                 return NotFound(result);
             return Ok(result);
         }
-
-
+        
+        
+        [HttpGet]
+        [Route("GetCategoriesNames")]
+        public async Task<IActionResult> GetAllCategoriesNames()
+        {
+            var result = await _repo.GetCategoriesNamesAsync();
+            if(result == null)
+                return NotFound("There Is No Categories");
+            return Ok(result);
         }
+
+    }
 }

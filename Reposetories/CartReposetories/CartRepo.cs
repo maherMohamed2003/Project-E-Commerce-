@@ -58,7 +58,8 @@ namespace E_Commerce_Proj.Reposetories.CartReposetories
         {
             var cartItems = _context.CartItems.Include(x => x.product).Where(x => x.cart.CustomerId == id).Select(x => new DisplayCartItemDTO
                 {
-                    Id = x.Id,
+                    Id = x.ProductId,
+                    image = x.product.ImageURL,
                     ProductName = x.product.Name,
                     Quentity = x.Quantity
                 }).ToListAsync();
@@ -70,7 +71,8 @@ namespace E_Commerce_Proj.Reposetories.CartReposetories
             var nowUser = await _context.Customers.Include(x => x.cart).FirstOrDefaultAsync(x => x.Id == userId);
             if(nowUser == null)
                 return "Something Went Wrong";
-            var cartItem = await _context.CartItems.FirstOrDefaultAsync(x => x.CartId == nowUser.cart.Id && x.ProductId == productId);
+            var userCart = nowUser.cart;
+            var cartItem = await _context.CartItems.FirstOrDefaultAsync(x => x.CartId == userCart.Id && x.ProductId == productId);
             if(cartItem == null)
                 return "Item Not Found In Cart";
             _context.CartItems.Remove(cartItem);

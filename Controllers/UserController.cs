@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using E_Commerce_Proj.Authentication;
 using E_Commerce_Proj.Data;
+using E_Commerce_Proj.DTOs.RoleDTOs;
 using E_Commerce_Proj.DTOs.User;
 using E_Commerce_Proj.DTOs.UserDTOs;
 using E_Commerce_Proj.Models;
@@ -129,8 +130,46 @@ namespace E_Commerce_Proj.Controllers
             if (result == PasswordVerificationResult.Failed)
                 return NotFound("Invalid Email Or Password");
             var token = GenerateToken(user);
-            
-            return Ok(token);
+            var response = await _context.Customers.Where(x => x.Id == user.Id).Select(x => new LoginResponseDTO
+            {
+                Token = token,
+                UserInfo = new DisplayUserInfo
+                {
+                    Id = x.Id,
+                    FName = x.FName,
+                    LName = x.LName,
+                    Email = x.Email,
+                    isBlocked = x.isBlocked,
+                    Roles = x.roles.Select(r => new DisplayRoleDTO
+                    {
+                        RoleName = r.Name
+                    }).ToList()
+                }
+            }).FirstOrDefaultAsync();
+            return Ok(response);
+        }
+
+
+        [HttpGet]
+        [Route("GetUserById/")]
+        public async Task<IActionResult> GetUserById(int id)
+        {
+            var user = await _context.Customers.Select(x => new DisplayUserInfo
+            {
+                Id = x.Id,
+                FName = x.FName,
+                LName = x.LName,
+                Email = x.Email,
+                isBlocked = x.isBlocked,
+                Roles = x.roles.Select(r => new DisplayRoleDTO
+                {
+                    RoleName = r.Name
+                }).ToList()
+            }).FirstOrDefaultAsync(u => u.Id == id);
+
+            if (user == null)
+                return NotFound("User Not Found");
+            return Ok(user);
         }
 
         [HttpPut]
@@ -210,50 +249,7 @@ namespace E_Commerce_Proj.Controllers
             return Ok("User Is Not Blocked Now");
         }
 
-        [HttpPost("facebook")]
-        [AllowAnonymous]
-        public async Task<IActionResult> FacebookLogin([FromBody] FacebookLoginRequest request)
-        {
-            var httpClient = new HttpClient();
-
-            var response = await httpClient.GetAsync(
-                $"https://graph.facebook.com/me?fields=id,name,email&access_token={request.token}");
-
-            if (!response.IsSuccessStatusCode)
-                return BadRequest("Invalid Facebook Token");
-
-            var content = await response.Content.ReadAsStringAsync();
-
-            dynamic data = JsonConvert.DeserializeObject(content);
-
-            string email = data.email;
-            string name = data.name;
-
-            var user = await _context.Customers.FirstOrDefaultAsync(x => x.Email == email);
-
-            if (user == null)
-            {
-                user = new Customer
-                {
-                    FName = name,
-                    Email = email
-                };
-
-                await _context.Customers.AddAsync(user);
-            }
-
-            var token = GenerateToken(user);
-
-            return Ok(new
-            {
-                token = token,
-                email = email,
-                name = name
-            });
-        }
-
-
-
+        
 
         private string GenerateToken(Customer r)
         {

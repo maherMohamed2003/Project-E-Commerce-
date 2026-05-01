@@ -335,6 +335,22 @@
   },
   {
     "ContainingType": "E_Commerce_Proj.Controllers.OrderController",
+    "Method": "DisplayOrderDetails",
+    "RelativePath": "api/Order/DisplayOrderDetails/{orderId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_Commerce_Proj.Controllers.OrderController",
     "Method": "DisplayOrdersPerUser",
     "RelativePath": "api/Order/DisplayOrdersPerUser/{userId}",
     "HttpMethod": "GET",
@@ -640,28 +656,28 @@
   },
   {
     "ContainingType": "E_Commerce_Proj.Controllers.UserController",
-    "Method": "FacebookLogin",
-    "RelativePath": "api/User/facebook",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "E_Commerce_Proj.DTOs.UserDTOs.FacebookLoginRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "E_Commerce_Proj.Controllers.UserController",
     "Method": "GetAllUsers",
     "RelativePath": "api/User/GetAllUsers",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_Commerce_Proj.Controllers.UserController",
+    "Method": "GetUserById",
+    "RelativePath": "api/User/GetUserById",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {

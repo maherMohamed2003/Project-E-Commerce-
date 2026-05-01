@@ -78,7 +78,17 @@ namespace E_Commerce_Proj.Reposetories.CategoryReposetories
             }).ToListAsync();
             return categories;
         }
-            
+
+        public async Task<List<DisplayCategoriesNamesDTO>> GetCategoriesNamesAsync()
+        {
+            var categoriesNames = await _context.Categories.Select(c => new DisplayCategoriesNamesDTO
+            {
+                Id = c.Id,
+                Name = c.Name
+            }).ToListAsync();
+            return categoriesNames;
+        }
+
         public Task<DisplayCategoryDTO> GetOneCategoryProductsAsync(int id)
         {
             var category = _context.Categories.Where(c => c.Id == id).Select(c => new DisplayCategoryDTO

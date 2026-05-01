@@ -123,6 +123,7 @@ namespace E_Commerce_Proj.Reposetories.OrderReposetories
                 Id = x.Id,
                 Items = x.orderItems.Select(oi => new DisplayOrderItem
                 {
+                    Id = oi.Id,
                     ProductName = oi.product.Name,
                     Quantity = oi.Quantity,
                     PricePerUnit = oi.product.Price
@@ -139,6 +140,30 @@ namespace E_Commerce_Proj.Reposetories.OrderReposetories
             return orders;
         }
 
+        public async Task<DisplayOrderDetails> DisplayOrderDetailsAsync(int orderId)
+        {
+            var order = await _context.Orders.Where(x => x.Id == orderId).Select(x => new DisplayOrderDetails
+            {
+                Id = x.Id,
+                Items = x.orderItems.Select(oi => new DisplayOrderItem
+                {
+                    Id = oi.Id,
+                    ProductName = oi.product.Name,
+                    Quantity = oi.Quantity,
+                    PricePerUnit = oi.product.Price
+                }).ToList(),
+                TotalPrice = x.TotalPrice,
+                PhoneNumber = x.PhoneNumber,
+                Address = x.Address,
+                ShippingStatus = x.shipping != null ? x.shipping.ShippingStatus : "Not Shipped",
+                ShippingCarrier = x.shipping != null ? x.shipping.ShippingCarrier : "N/A",
+                TrackingNumber = x.shipping != null ? x.shipping.TrackingNumber : "N/A",
+            }).FirstOrDefaultAsync();
+            if (order == null)
+                return null;
+            return order;
+        }
+
         public async Task<List<DisplayOrderDetails>> DisplayOrdersPerUserAsync(int userId)
         {
             var userOrders =  await _context.Orders.Where(x => x.CustomerId == userId).Select(x => new DisplayOrderDetails
@@ -146,6 +171,7 @@ namespace E_Commerce_Proj.Reposetories.OrderReposetories
                 Id = x.Id,
                 Items = x.orderItems.Select(oi => new DisplayOrderItem
                 {
+                    Id = oi.Id,
                     ProductName = oi.product.Name,
                     Quantity = oi.Quantity,
                     PricePerUnit = oi.product.Price
