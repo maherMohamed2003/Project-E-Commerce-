@@ -1,4 +1,6 @@
-﻿namespace E_Commerce_Proj.DTOs.OrderDTOs
+﻿using E_Commerce_Proj.DTOs.ShipmentDTOs;
+
+namespace E_Commerce_Proj.DTOs.OrderDTOs
 {
     public class DisplayOrderDetails
     {
@@ -10,5 +12,6 @@
         public string ShippingStatus { get; set; }
         public string ShippingCarrier { get; set; }
         public string TrackingNumber { get; set; }
+        public List<ShippingStatusDTO> ShippingStatusHistory { get; set; }
     }
 }

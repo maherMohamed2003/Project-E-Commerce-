@@ -139,6 +139,16 @@
   },
   {
     "ContainingType": "E_Commerce_Proj.Controllers.CategoryController",
+    "Method": "GetAllCategoriesNames",
+    "RelativePath": "api/Category/GetCategoriesNames",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_Commerce_Proj.Controllers.CategoryController",
     "Method": "GetOneCategory",
     "RelativePath": "api/Category/GetOneCategory/{id}",
     "HttpMethod": "GET",

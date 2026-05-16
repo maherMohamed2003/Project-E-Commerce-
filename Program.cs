@@ -28,6 +28,7 @@ builder.Services.AddControllers().AddFluentValidation(o =>
         o.RegisterValidatorsFromAssemblyContaining<UpdateProductValidation>();
         o.RegisterValidatorsFromAssemblyContaining<UpdateCategoryValidation>();
     });
+builder.Services.AddHttpClient();
 builder.Services.AddDbContextSettings().AddSwaggerSettings().AddReposetories();
 
 var jwt = builder.Configuration.GetSection("JWT").Get<JWTOptions>();

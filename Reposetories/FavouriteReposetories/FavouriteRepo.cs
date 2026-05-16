@@ -61,6 +61,7 @@ namespace E_Commerce_Proj.Reposetories.FavouriteReposetories
                 if (prod == null) continue;
                 var product = new DisplayProductDTO
                 {
+                    Id = prod.Id,
                     Name = prod.Name,
                     Description = prod.Description,
                     Price = prod.Price,

@@ -1,5 +1,6 @@
 ﻿using E_Commerce_Proj.Data;
 using E_Commerce_Proj.DTOs.OrderDTOs;
+using E_Commerce_Proj.DTOs.ShipmentDTOs;
 using E_Commerce_Proj.Reposetories.CartReposetories;
 using Microsoft.EntityFrameworkCore;
 using storeProject.Models;
@@ -10,11 +11,13 @@ namespace E_Commerce_Proj.Reposetories.OrderReposetories
     {
         private readonly AppDbContext _context;
         private readonly ICartRepo _cartRepo;
+        private readonly HttpClient _httpClient;
 
-        public OrderRepo(AppDbContext context, ICartRepo cartRepo)
+        public OrderRepo(AppDbContext context, ICartRepo cartRepo, HttpClient httpClient)
         {
             _context = context;
             _cartRepo = cartRepo;
+            _httpClient = httpClient;
         }
 
         public async Task<string> CancelOrderAsync(int orderId)
@@ -47,7 +50,7 @@ namespace E_Commerce_Proj.Reposetories.OrderReposetories
             return "Order cancelled successfully.";
         }
 
-        public async Task<DisplayOrderDetails> CreateOrderAsync(CreateOrderDTO orderDTO)
+        public async Task<ShippingResponseDTO> CreateOrderAsync(CreateOrderDTO orderDTO)
         {
             var user = await _context.Customers.Include(x => x.cart).FirstOrDefaultAsync(x => x.Id == orderDTO.UserId);
             if(user == null)
@@ -68,10 +71,11 @@ namespace E_Commerce_Proj.Reposetories.OrderReposetories
                 Address = orderDTO.Address,
                 PhoneNumber = orderDTO.PhoneNumber
             };
-            await _context.Orders.AddAsync(order);
-            await _context.SaveChangesAsync();
 
             var price = 0m;
+            await _context.Orders.AddAsync(order);
+            await _context.SaveChangesAsync();
+            
             foreach (var item in cartItems)
             {
                 var orderItem = new OrderItem
@@ -92,28 +96,40 @@ namespace E_Commerce_Proj.Reposetories.OrderReposetories
             }
             order.TotalPrice = price;
             await _context.SaveChangesAsync();
-            
-            var info = new DisplayOrderDetails
-            {
-                Id = order.Id,
-                Items = cartItems.Select(x => new DisplayOrderItem {
-                    Id = x.Id,
-                    Quantity = x.Quantity,
-                ProductName = x.product.Name,
-                PricePerUnit = x.product.Price
-                }).ToList(),
-
-                TotalPrice = price,
-                PhoneNumber = order.PhoneNumber,
-                Address = order.Address,
-                ShippingStatus = order.shipping != null ? order.shipping.ShippingStatus : "Not Shipped",
-                ShippingCarrier = order.shipping != null ? order.shipping.ShippingCarrier : "N/A",
-                TrackingNumber = order.shipping != null ? order.shipping.TrackingNumber : "N/A",
-            };
             await _cartRepo.ClearCartAsync(user.Id);
-            return info;
 
-            //Send this Order To Shipping Service Here !!
+            var request = new MakeShipmentDTO
+            {
+                senderName = "Aura Store",
+                senderPhone = "1145466800",
+                senderAddress = "sohaj,tahta,15",
+                receiverName = user.FName + " " + user.LName,
+                receiverAddress = orderDTO.Address,
+                receiverPhone = orderDTO.PhoneNumber.Substring(1),
+                egpAmount = price,
+                clientID = 1
+
+            };
+            var api = "http://auracompanyfordeleveryservices.runasp.net/api/Shipment/MakeShipment";
+            var response = await _httpClient.PostAsJsonAsync(api, request);
+            response.EnsureSuccessStatusCode();
+            var result = await response.Content.ReadFromJsonAsync<ShippingResponseDTO>();
+            order.OrderStatus = result.nowStatus;
+            result.id = order.Id;
+
+            var shipping = new Shipping
+            {
+                EstimatedDate = DateTime.Now,
+                ExpectedDate = result.DeliveredAt,
+                OrderId = order.Id,
+                ShippingCarrier = result.DriverName ??  "Not Assigned Yet" ,
+                ShippingStatus = result.nowStatus,
+                TrackingNumber = "1234"
+            };
+            await _context.Shippings.AddAsync(shipping);
+            await _context.SaveChangesAsync();
+            return result;
+
         }
 
         public async Task<List<DisplayOrderDetails>> DisplayAllOrdersAsync()
@@ -124,6 +140,7 @@ namespace E_Commerce_Proj.Reposetories.OrderReposetories
                 Items = x.orderItems.Select(oi => new DisplayOrderItem
                 {
                     Id = oi.Id,
+                    Image = oi.product.ImageURL,
                     ProductName = oi.product.Name,
                     Quantity = oi.Quantity,
                     PricePerUnit = oi.product.Price
@@ -148,6 +165,7 @@ namespace E_Commerce_Proj.Reposetories.OrderReposetories
                 Items = x.orderItems.Select(oi => new DisplayOrderItem
                 {
                     Id = oi.Id,
+                    Image = oi.product.ImageURL,
                     ProductName = oi.product.Name,
                     Quantity = oi.Quantity,
                     PricePerUnit = oi.product.Price
@@ -159,8 +177,18 @@ namespace E_Commerce_Proj.Reposetories.OrderReposetories
                 ShippingCarrier = x.shipping != null ? x.shipping.ShippingCarrier : "N/A",
                 TrackingNumber = x.shipping != null ? x.shipping.TrackingNumber : "N/A",
             }).FirstOrDefaultAsync();
-            if (order == null)
+            if(order == null)
                 return null;
+            var api = $"http://auracompanyfordeleveryservices.runasp.net/api/Shipment/GetShipmentHistory/{orderId}";
+            var response = await _httpClient.GetAsync(api);
+            response.EnsureSuccessStatusCode();
+            var result = await response.Content.ReadFromJsonAsync<List<ShippingStatusDTO>>();
+
+           order.ShippingStatus = result.OrderByDescending(x => x.changeAt).FirstOrDefault()?.statusValue ?? order.ShippingStatus;
+           await _context.SaveChangesAsync();
+
+
+
             return order;
         }
 
@@ -172,6 +200,7 @@ namespace E_Commerce_Proj.Reposetories.OrderReposetories
                 Items = x.orderItems.Select(oi => new DisplayOrderItem
                 {
                     Id = oi.Id,
+                    Image = oi.product.ImageURL,
                     ProductName = oi.product.Name,
                     Quantity = oi.Quantity,
                     PricePerUnit = oi.product.Price
