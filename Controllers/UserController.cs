@@ -10,6 +10,8 @@ using E_Commerce_Proj.DTOs.RoleDTOs;
 using E_Commerce_Proj.DTOs.User;
 using E_Commerce_Proj.DTOs.UserDTOs;
 using E_Commerce_Proj.Models;
+using E_Commerce_Proj.Reposetories.CartReposetories;
+using E_Commerce_Proj.Reposetories.FavouriteReposetories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -27,11 +29,15 @@ namespace E_Commerce_Proj.Controllers
     {
         private readonly AppDbContext _context;
         private readonly JWTOptions _jwt;
+        private readonly ICartRepo _cartRepo;
+        private readonly IFavouriteRepo _favRepo;
 
-        public UserController(AppDbContext context, JWTOptions jwt)
+        public UserController(AppDbContext context, JWTOptions jwt, ICartRepo cartRepo, IFavouriteRepo favRepo)
         {
             _context = context;
             _jwt = jwt;
+            _cartRepo = cartRepo;
+            _favRepo = favRepo;
         }
 
         [HttpPost]
@@ -140,7 +146,7 @@ namespace E_Commerce_Proj.Controllers
                     LName = x.LName,
                     Email = x.Email,
                     isBlocked = x.isBlocked,
-                    Roles = x.roles.Select(r => new DisplayRoleDTO
+                    Roles = x.roles.Where(rr => rr.customerId == x.Id).Select(r => new DisplayRoleDTO
                     {
                         RoleName = r.Name
                     }).ToList()
@@ -189,6 +195,7 @@ namespace E_Commerce_Proj.Controllers
 
         [HttpDelete]
         [Route("DeleteProfile/{id}")]
+        [AllowAnonymous]
         public async Task<IActionResult> DeleteProfile(int id)
         {
             var user = await _context.Customers.FirstOrDefaultAsync(u => u.Id == id);
@@ -199,7 +206,15 @@ namespace E_Commerce_Proj.Controllers
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.customerId == id);
             if(cart != null) { 
                 _context.Roles.Remove(role);
+            }
+            if(fav != null)
+            {
+                await _favRepo.ClearFavouriteListAsync(user.Id);
                 _context.Favourites.Remove(fav);
+            }
+            if(cart != null)
+            {
+                await _cartRepo.ClearCartAsync(user.Id);
                 _context.Carts.Remove(cart);
             }
             _context.Customers.Remove(user);
@@ -217,7 +232,8 @@ namespace E_Commerce_Proj.Controllers
                 FName = x.FName,
                 LName = x.LName,
                 Email = x.Email,
-                isBlocked = x.isBlocked
+                isBlocked = x.isBlocked,
+                Roles = x.roles.Where(r => r.customerId == x.Id).Select(r => new DisplayRoleDTO { RoleName = r.Name}).ToList()
             }).ToListAsync();
             return Ok(users);
         }

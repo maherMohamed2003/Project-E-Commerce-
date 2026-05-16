@@ -61,8 +61,10 @@ namespace E_Commerce_Proj.Reposetories.CartReposetories
                     Id = x.ProductId,
                     image = x.product.ImageURL,
                     ProductName = x.product.Name,
-                    Quentity = x.Quantity
-                }).ToListAsync();
+                    Quentity = x.Quantity,
+                    Description = x.product.Description,
+                    Price = x.product.Price
+            }).ToListAsync();
                 return cartItems;
         }
 

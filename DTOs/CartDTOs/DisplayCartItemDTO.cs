@@ -6,6 +6,8 @@
         public string ProductName { get; set; }
         public string image { get; set; }
         public int Quentity { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
 
 
     }

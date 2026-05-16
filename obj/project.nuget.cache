@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "waymoz18cW8=",
+  "dgSpecHash": "9EdIL8BCrYA=",
   "success": true,
   "projectFilePath": "A:\\Collage\\Third Year 2 sem\\Projects\\E-Commerce Proj\\Githup version\\Project-E-Commerce-\\E-Commerce Proj.csproj",
   "expectedPackageFiles": [
@@ -61,15 +61,5 @@
     "C:\\Users\\maher\\.nuget\\packages\\system.security.cryptography.pkcs\\9.0.4\\system.security.cryptography.pkcs.9.0.4.nupkg.sha512",
     "C:\\Users\\maher\\.nuget\\packages\\system.security.cryptography.protecteddata\\9.0.4\\system.security.cryptography.protecteddata.9.0.4.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json.",
-      "projectPath": "A:\\Collage\\Third Year 2 sem\\Projects\\E-Commerce Proj\\Githup version\\Project-E-Commerce-\\E-Commerce Proj.csproj",
-      "warningLevel": 1,
-      "filePath": "A:\\Collage\\Third Year 2 sem\\Projects\\E-Commerce Proj\\Githup version\\Project-E-Commerce-\\E-Commerce Proj.csproj",
-      "targetGraphs": []
-    }
-  ]
+  "logs": []
 }

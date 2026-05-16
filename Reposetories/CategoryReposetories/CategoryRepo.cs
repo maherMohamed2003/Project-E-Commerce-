@@ -84,7 +84,9 @@ namespace E_Commerce_Proj.Reposetories.CategoryReposetories
             var categoriesNames = await _context.Categories.Select(c => new DisplayCategoriesNamesDTO
             {
                 Id = c.Id,
-                Name = c.Name
+                Name = c.Name,
+                totalPriceOfProducts = c.products.Sum(p => p.Price * p.Quantity),
+                numberOfProducts = c.products.Count()
             }).ToListAsync();
             return categoriesNames;
         }

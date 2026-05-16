@@ -30,6 +30,7 @@ namespace E_Commerce_Proj.Data
             services.AddScoped<IReviewRepo, ReviewRepo>();
             services.AddScoped<ICartRepo, CartRepo>();
             services.AddScoped<IOrderRepo, OrderRepo>();
+
             services.AddScoped<IFavouriteRepo, FavouriteRepo>();
             return services;
         }
